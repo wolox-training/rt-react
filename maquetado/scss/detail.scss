@@ -1,27 +1,27 @@
-.content {
+.book-content {
   display: flex;
   flex-direction: column;
   padding: 20px 30px 15px 15px;
 
-  .title {
+  .book-title {
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 50px;
 
-    span {
+    .book-title-desc {
       color: #7e7e7e;
       font-size: 22px;
       font-weight: bold;
     }
   }
 
-  .subtitle {
+  .book-detail {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 30px;
 
-    span {
-      color: grey;
+    .book-detail-desc {
+      color: #808080;
       font-size: 18px;
     }
   }
