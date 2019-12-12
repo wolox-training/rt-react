@@ -1,3 +1,5 @@
+@import 'colors';
+
 .book-content {
   display: flex;
   flex-direction: column;
@@ -9,7 +11,7 @@
     margin-bottom: 50px;
 
     .book-title-desc {
-      color: #7e7e7e;
+      color: $gray;
       font-size: 22px;
       font-weight: bold;
     }
@@ -21,7 +23,7 @@
     margin-bottom: 30px;
 
     .book-detail-desc {
-      color: #808080;
+      color: $gray-solid;
       font-size: 18px;
     }
   }
