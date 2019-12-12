@@ -1,0 +1,28 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px 15px 15px;
+
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 50px;
+
+    span {
+      color: #7e7e7e;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
+
+  .subtitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+
+    span {
+      color: grey;
+      font-size: 18px;
+    }
+  }
+}
