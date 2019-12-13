@@ -12,27 +12,16 @@
     display: flex;
     flex-direction: column;
   
-    .book-title {
+    .title-1 {
       font-size: 28px;
       font-weight: bold;
       margin-bottom: 50px;
-  
-      .text-1 {
-        color: $gray;
-        font-size: 22px;
-        font-weight: bold;
-      }
     }
   
-    .book-detail {
+    .desc-1 {
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 30px;
-  
-      .text-2 {
-        color: $gray-solid;
-        font-size: 18px;
-      }
     }
   }  
 }
