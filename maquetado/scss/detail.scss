@@ -2,26 +2,26 @@
 
 .book-content {
   display: flex;
-  padding: 30px 25px;
+  padding: 30px 25px;  
+}
 
-  .book-image {
-    margin-right: 50px;
+.book-image {
+  margin-right: 50px;
+}
+
+.book-text {
+  display: flex;
+  flex-direction: column;
+
+  .title-1.book-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 50px;
   }
 
-  .book-text {
-    display: flex;
-    flex-direction: column;
-  
-    .title-1 {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 50px;
-    }
-  
-    .desc-1 {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-  }  
+  .desc-1.book-detail {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
 }
