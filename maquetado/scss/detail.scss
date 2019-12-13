@@ -15,6 +15,14 @@
 
 .book-image {
   margin-right: 50px;
+  position: relative;
+}
+
+.img-badge {
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  transform: rotate(15deg);
 }
 
 .book-text {
