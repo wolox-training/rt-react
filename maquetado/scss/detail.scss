@@ -1,0 +1,27 @@
+@import 'colors';
+
+.book-content {
+  display: flex;
+  padding: 30px 25px;  
+}
+
+.book-image {
+  margin-right: 50px;
+}
+
+.book-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.book-detail {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
