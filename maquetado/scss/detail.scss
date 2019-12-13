@@ -1,16 +1,16 @@
 @import 'colors';
 
-.main-content {
-  display: flex;
-  justify-content: center;
+.main {
   padding-top: 20px;
 }
 
 .book-content {
   box-shadow: 4px 4px 7px grey;
   display: flex;
+  margin: auto;
+  max-width: 950px;
   padding: 30px 25px;  
-  width: 70%;
+  width: 100%;
 }
 
 .book-image {
