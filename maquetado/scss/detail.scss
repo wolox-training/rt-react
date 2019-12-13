@@ -16,6 +16,19 @@
 .book-image {
   margin-right: 50px;
   position: relative;
+
+  &::after {
+    background-image: url(images/badge.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: "";
+    height: 90px;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    transform: rotate(15deg);
+    width: 60px;
+  }
 }
 
 .book-text {
