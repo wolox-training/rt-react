@@ -1,8 +1,16 @@
 @import 'colors';
 
+.main {
+  padding-top: 20px;
+}
+
 .book-content {
+  box-shadow: 4px 4px 7px grey;
   display: flex;
+  margin: auto;
+  max-width: 950px;
   padding: 30px 25px;  
+  width: 100%;
 }
 
 .book-image {
@@ -12,12 +20,15 @@
 .book-text {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .book-title {
+  border-bottom: 3px solid $pear;
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 50px;
+  padding-bottom: 10px;
 }
 
 .book-detail {
