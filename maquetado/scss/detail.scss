@@ -65,3 +65,26 @@
   font-weight: bold;
   margin-bottom: 30px;
 }
+
+@media only screen and (max-width: 1023px) {
+  .main {
+    padding: 80px 50px 120px;
+  }
+
+  .book-content {
+    flex-direction: column;
+    max-width: none;
+    padding: 100px 60px;
+  }
+
+  .book-image {
+    margin: 0;
+    padding: 0 80px 60px;
+    text-align: center;
+  }
+
+  .principal-img {
+    width: 100%;
+    height: auto;
+  }
+}
