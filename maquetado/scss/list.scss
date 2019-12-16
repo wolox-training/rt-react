@@ -1,25 +1,25 @@
-.book-list-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: auto;
-    max-width: 800px;
-    width: 100%;
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 800px;
+  width: 100%;
 }
 
 .book-cover {
-    box-shadow: 4px 4px 7px grey;
-    flex-basis: 22%;
-    margin-bottom: 30px;
-    padding: 20px 25px;
+  box-shadow: 4px 4px 7px $gray-solid;
+  margin-bottom: 30px;
+  padding: 20px 25px;
+  width: 176px;
 }
 
 .book-coover-img {
-    width: 100%;
+  width: 100%;
+  margin-bottom: 3px;
 }
 
 .book-cover-title {
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 5px;
+  font-size: 12px;
+  font-weight: bold;
 }
