@@ -1,0 +1,63 @@
+@import 'fonts';
+
+.login-content {
+  align-items: center;
+  background-color: $wild-sand-solid;
+  border-top: 5px solid $dodger-blue;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 220px;
+  padding: 15px 18px;
+  width: 100%;
+}
+
+.login-img {
+  width: 150px;
+  margin-bottom: 15px;
+}
+
+.login-form {
+  width: 100%;
+}
+
+.login-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.login-label {
+  font-size: $text-small;
+  margin-bottom: 7px;
+}
+
+.login-input {
+  border-radius: 4px;
+  line-height: 1.7;
+}
+
+.login-submit {
+  background-color: $pear;
+  border-radius: 4px;
+  color: $white;
+  font-size: $text-small;
+  margin-bottom: 10px;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.sign-up-top {
+  border: 1px solid $nobel;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.sign-up {
+  border: 2px solid $pear;
+  border-radius: 4px;
+  color: $pear;
+  font-size: $text-small;
+  padding: 5px 0;
+  width: 100%;
+}
