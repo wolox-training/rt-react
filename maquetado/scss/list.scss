@@ -1,5 +1,23 @@
 @import 'fonts';
 
+.navbar {
+  align-items: center;
+  background-color: $white;
+  border-top: 4px solid $dodger-blue;
+  box-shadow: 4px 4px 7px $gray-solid;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 275px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.main-book-list {
+  padding-top: 90px;
+}
+
 .book-list {
   display: flex;
   flex-wrap: wrap;
