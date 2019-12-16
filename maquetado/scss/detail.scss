@@ -1,7 +1,24 @@
 @import 'colors';
+@import 'fonts';
 
 .main {
   padding-top: 20px;
+}
+
+.back-link {
+  font-size: $text-link-1;
+  padding-left: 105px;
+  position: relative;
+
+  &::before {
+    background: url(images/back-arrow-20.png) no-repeat center/cover;
+    content: "";
+    height: 20px;
+    position: absolute;
+    right: 45px;
+    bottom: 0;
+    width: 20px;
+  }
 }
 
 .book-content {
