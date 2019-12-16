@@ -1,3 +1,5 @@
+@import 'fonts';
+
 .login-content {
   align-items: center;
   background-color: $wild-sand-solid;
@@ -11,26 +13,22 @@
 }
 
 .login-img {
-  width: 80%;
+  width: 150px;
+  margin-bottom: 15px;
 }
 
 .login-form {
-  margin-top: 15px;
   width: 100%;
 }
 
-.login-inputs-content {
+.login-input-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-  
-  &:last-child {
-    margin-bottom: 10px;
-  }
 }
 
 .login-label {
-  font-size: 11px;
+  font-size: $text-small;
   margin-bottom: 7px;
 }
 
@@ -43,13 +41,15 @@
   background-color: $pear;
   border-radius: 4px;
   color: $white;
-  font-size: 11px;
+  font-size: $text-small;
+  margin-bottom: 10px;
   padding: 5px 0;
+  width: 100%;
 }
 
-.sign-up-content {
-  border-top: 2px solid $nobel;
-  padding-top: 10px;
+.sign-up-top {
+  border: 1px solid $nobel;
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -57,7 +57,7 @@
   border: 2px solid $pear;
   border-radius: 4px;
   color: $pear;
-  font-size: 11px;
+  font-size: $text-small;
   padding: 5px 0;
   width: 100%;
 }
