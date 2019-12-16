@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .navbar {
   background-color: $white;
   border-top: 4px solid $dodger-blue;
@@ -36,23 +37,43 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 75px auto;
+=======
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+>>>>>>> book-list
   max-width: 800px;
   width: 100%;
 }
 
 .book-cover {
   box-shadow: 4px 4px 7px $gray-solid;
+<<<<<<< HEAD
   flex-basis: 22%;
   margin-bottom: 30px;
   padding: 20px 25px;
+=======
+  margin-bottom: 30px;
+  padding: 20px 25px;
+  width: 176px;
+>>>>>>> book-list
 }
 
 .book-coover-img {
   width: 100%;
+<<<<<<< HEAD
+=======
+  margin-bottom: 3px;
+>>>>>>> book-list
 }
 
 .book-cover-title {
   font-size: 12px;
   font-weight: bold;
+<<<<<<< HEAD
   margin-top: 5px;
+=======
+>>>>>>> book-list
 }
