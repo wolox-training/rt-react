@@ -31,7 +31,12 @@
   box-shadow: 4px 4px 7px $gray-solid;
   margin-bottom: 30px;
   padding: 20px 25px;
+  transition: transform 0.5s;
   width: 175px;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .book-coover-img {
