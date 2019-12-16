@@ -18,9 +18,7 @@
   position: relative;
 
   &::after {
-    background-image: url(images/badge.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: url(images/badge.png) no-repeat center/cover;
     content: "";
     height: 90px;
     position: absolute;
