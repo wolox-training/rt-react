@@ -1,3 +1,5 @@
+@import 'fonts';
+
 .text-1 {
   color: $gray;
   font-size: 22px;
@@ -11,5 +13,5 @@
 
 .text-3 {
   color: $gray-solid;
-  font-size: 11px;
+  font-size: $text-small;
 }
