@@ -9,7 +9,7 @@
   font-size: $text-medium;
   padding-left: 105px;
   position: relative;
-
+  
   &::before {
     background: url(images/back-arrow-20.png) no-repeat center/cover;
     content: "";
@@ -33,7 +33,7 @@
 .book-image {
   margin-right: 50px;
   position: relative;
-
+  
   &::after {
     background: url(images/badge.png) no-repeat center/cover;
     content: "";
@@ -71,7 +71,7 @@
     padding: 20px 20px 40px;
     position: relative;
   }
-
+  
   .back-link {
     bottom: 0;
     left: 50%;
@@ -79,45 +79,66 @@
     position: absolute;
     transform: translate(-50%, 0);
   }
-
+  
   .book-content {
     flex-direction: column;
-    max-width: none;
     padding: 30px 30px 10px;
   }
-
+  
   .book-image {
     margin: 0 auto 25px;
-    width: 75%;
+    width: 90%;
+    
+    &::after {
+      height: calc(90px - 10 * 90px / 100);
+      width: calc(60px - 10 * 60px / 100);
+    }
+  }
+  
+  .book-cover-image {
+    height: auto;
+    width: 100%;
+  }
+  
+  .book-title {
+    font-size: $title-1;
+    margin-bottom: 25px;
+  }
+  
+  .book-title .text-1 {
+    font-size: $text-medium;
+    font-weight: normal;
+  }
+  
+  .book-detail {
+    font-size: $title-3;
+  }
+  
+  .book-detail .text-2 {
+    font-size: $text-sm;
+  }
+}
 
+@media only screen and (max-width: 767px) {
+  .book-image {
+    width: 80%;
+    
+    &::after {
+      height: calc(90px - 20 * 90px / 100);
+      width: calc(60px - 20 * 60px / 100);
+    }
+  }
+}
+
+@media only screen and (max-width: 424px) {
+  .book-image {
+    width: 70%;
+    
     &::after {
       height: calc(90px - 30 * 90px / 100);
       right: -10px;
       top: -10px;
       width: calc(60px - 30 * 60px / 100);
     }
-  }
-
-  .principal-img {
-    height: auto;
-    width: 100%;
-  }
-
-  .book-title {
-    font-size: $title-1;
-    margin-bottom: 25px;
-  }
-
-  .book-title .text-1 {
-    font-size: $text-medium;
-    font-weight: normal;
-  }
-
-  .book-detail {
-    font-size: $title-3;
-  }
-
-  .book-detail .text-2 {
-    font-size: $text-sm;
   }
 }
