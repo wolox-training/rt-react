@@ -68,54 +68,35 @@
 
 @media only screen and (max-width: 1023px) {
   .main {
-    padding: 20px 20px 40px;
-    position: relative;
+    padding: 50px;
   }
-  
+
   .back-link {
-    bottom: 0;
-    left: 50%;
+    left: 25px;
     padding: 0;
-    position: absolute;
-    transform: translate(-50%, 0);
-  }
-  
-  .book-content {
-    flex-direction: column;
-    padding: 30px 30px 10px;
-  }
-  
-  .book-image {
-    margin: 0 auto 25px;
-    width: 90%;
-    
-    &::after {
-      height: 80px;
-      width: 55px;
-    }
-  }
-  
-  .book-cover-image {
-    height: auto;
-    width: 100%;
-  }
-  
-  .book-title {
-    font-size: $title-1;
     margin-bottom: 25px;
   }
   
-  .book-title .text-1 {
-    font-size: $text-medium;
-    font-weight: normal;
+  .book-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 80px 1fr;
   }
   
-  .book-detail {
-    font-size: $title-3;
+  .book-image {
+    grid-area: 2/1/2/1;
+  }
+
+  .book-text {
+    grid-area: 1/2/span 2/2;
+    justify-content: center;
+    position: relative;
   }
   
-  .book-detail .text-2 {
-    font-size: $text-sm;
+  .book-title {
+    border-bottom: none;
+    position: absolute;
+    top: 0;
   }
 }
 
