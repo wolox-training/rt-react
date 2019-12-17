@@ -6,7 +6,7 @@
 }
 
 .back-link {
-  font-size: $text-link-1;
+  font-size: $text-medium;
   padding-left: 105px;
   position: relative;
 
@@ -68,23 +68,56 @@
 
 @media only screen and (max-width: 1023px) {
   .main {
-    padding: 80px 50px 120px;
+    padding: 20px 20px 40px;
+    position: relative;
+  }
+
+  .back-link {
+    bottom: 0;
+    left: 50%;
+    padding: 0;
+    position: absolute;
+    transform: translate(-50%, 0);
   }
 
   .book-content {
     flex-direction: column;
     max-width: none;
-    padding: 100px 60px;
+    padding: 30px 30px 10px;
   }
 
   .book-image {
-    margin: 0;
-    padding: 0 80px 60px;
-    text-align: center;
+    margin: 0 auto 25px;
+    width: 75%;
+
+    &::after {
+      height: calc(90px - 30 * 90px / 100);
+      right: -10px;
+      top: -10px;
+      width: calc(60px - 30 * 60px / 100);
+    }
   }
 
   .principal-img {
-    width: 100%;
     height: auto;
+    width: 100%;
+  }
+
+  .book-title {
+    font-size: $title-1;
+    margin-bottom: 25px;
+  }
+
+  .book-title .text-1 {
+    font-size: $text-medium;
+    font-weight: normal;
+  }
+
+  .book-detail {
+    font-size: $title-3;
+  }
+
+  .book-detail .text-2 {
+    font-size: $text-sm;
   }
 }
