@@ -106,25 +106,64 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .main {
+    padding: 30px 60px 50px;
+    position: relative;
+  }
+
+  .back-link {
+    position: absolute;
+    padding-top: 2px;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .book-content {
+    grid-template-columns: 100%;
+    grid-template-rows: 435px 1fr;
+    position: relative;
+  }
+
   .book-image {
-    width: 80%;
-    
+    align-items: center;
+    display: flex;
+    grid-area: 1/1/span 1/1;
+    margin: 0 auto;
+
     &::after {
-      height: 70px;
-      width: 45px;
+      top: 25px;
     }
   }
-}
 
-@media only screen and (max-width: 424px) {
-  .book-image {
-    width: 70%;
-    
-    &::after {
-      height: 60px;
-      right: -10px;
-      top: -10px;
-      width: 40px;
-    }
+  .book-text {
+    border-top: 4px solid $pear;
+    grid-area: 2/1/span 2/1;
+    padding-top: 20px;
+    position: static;
+  }
+
+  .book-title {
+    font-size: $title-1;
+    left: 50%;
+    position: absolute;
+    top: 15px;
+    transform: translate(-50%, 0);
+  }
+
+  .book-title .text-1 {
+    font-size: 14px;
+    left: 50%;
+    position: absolute;
+    top: 425px;
+    transform: translate(-50%, 0);
+  }
+
+  .book-detail {
+    font-size: $title-3;
+  }
+
+  .book-detail .text-2 {
+    font-size: $text-sm;
   }
 }
