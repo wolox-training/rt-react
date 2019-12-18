@@ -141,7 +141,15 @@
   }
 
   .book-title {
+    display: grid;
+    grid-template-rows: 60px 350px 50px;
     text-align: center;
+  }
+
+  .text-1 {
+    display: inline-block;
+    grid-area: 3/1/span 3/2;
+    padding: 0;
   }
 
   .book-detail {
