@@ -88,20 +88,22 @@
   }
 
   .book-text {
+    display: grid;
     grid-area: 1/2/span 2/2;
+    grid-template-columns: 100%;
+    grid-template-rows: 140px repeat(3, 50px) 1fr;
     justify-content: center;
     position: relative;
   }
   
   .book-title {
     border-bottom: none;
-    position: absolute;
-    top: 0;
+    grid-area: 1/1/span 1/2;
   }
 
   .text-1 {
     display: block;
-    text-align: center;
+    padding-left: 45px;
   }
 }
 
@@ -121,14 +123,11 @@
 
   .book-content {
     grid-template-columns: 100%;
-    grid-template-rows: 435px 1fr;
-    position: relative;
+    grid-template-rows: 60px 350px 1fr;
   }
 
   .book-image {
-    align-items: center;
-    display: flex;
-    grid-area: 1/1/span 1/1;
+    grid-area: 2/1/span 2/2;
     margin: 0 auto;
 
     &::after {
@@ -137,30 +136,31 @@
   }
 
   .book-text {
-    border-top: 4px solid $pear;
-    grid-area: 2/1/span 2/1;
-    padding-top: 20px;
-    position: static;
+    grid-area: 1/1/span 3/2;
+    grid-template-rows: 60px 350px 50px repeat(3, 35px);
   }
 
   .book-title {
-    font-size: $title-1;
-    left: 50%;
-    position: absolute;
-    top: 15px;
-    transform: translate(-50%, 0);
-  }
-
-  .book-title .text-1 {
-    font-size: $text-sm;
-    left: 50%;
-    position: absolute;
-    top: 425px;
-    transform: translate(-50%, 0);
+    text-align: center;
   }
 
   .book-detail {
     font-size: $title-3;
+    margin: 0;
+    padding-top: 20px;
+  }
+
+  .book-detail:nth-child(2) {
+    border-top: 4px solid $pear;
+    grid-area: 4/1/span 3/2;
+  }
+
+  .book-detail:nth-child(3) {
+    grid-area: 5/1/span 4/2;
+  }
+
+  .book-detail:nth-child(4) {
+    grid-area: 6/1/span 5/2;
   }
 
   .book-detail .text-2 {
