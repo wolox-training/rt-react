@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Square from '../Square';
 
@@ -7,8 +8,9 @@ import styles from './styles.module.scss';
 class Board extends Component {
   renderSquare(i) {
     return (
-      <Square 
-        value={this.props.squares[i]} 
+      <Square
+        value={this.props.squares[i]}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={() => this.props.onClick(i)}
       />
     );
@@ -36,5 +38,11 @@ class Board extends Component {
     );
   }
 }
+
+Board.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  squares: PropTypes.array,
+  onClick: PropTypes.func
+};
 
 export default Board;
