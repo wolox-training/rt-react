@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
+import { calculateWinner } from './utils'
 
 class Game extends React.Component {
   state = {
@@ -36,6 +37,14 @@ class Game extends React.Component {
     });
   }
 
+  getStatus(winner) {
+    if (winner) {
+      return 'Winner: ' + winner;
+    } else {
+      return 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -52,19 +61,14 @@ class Game extends React.Component {
       );
     });
 
-    let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    }
+    let status = this.getStatus(winner);
 
     return (
       <div className={styles.game}>
         <div className={styles.gameBoard}>
           <Board 
             squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
+            onClick={ (i) => this.handleClick(i) }
           />
         </div>
         <div className={styles.gameInfo}>
@@ -74,26 +78,6 @@ class Game extends React.Component {
       </div>
     );
   }
-}
-
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
 }
 
 export default Game;

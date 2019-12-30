@@ -1,12 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import styles from './styles.module.scss';
 
 const Square = (props) => {
+  const onHandleClick = () => {
+    const { id, onClick } = props;
+    onClick(id);
+  }
+
   return (
     <button type="button" 
       className={styles.square} 
-      onClick={() => props.onClick()}
+      onClick={onHandleClick}
     >
       {props.value}
     </button>
