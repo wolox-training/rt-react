@@ -20,11 +20,6 @@ class App extends Component {
   }
 
   // TODO to implement the dispatch
-  onSearch = value => {
-    store.dispatch(actionsCreators.searchBook(value));
-  };
-
-  // TODO to implement the dispatch
   addToCart = item => {};
 
   // TODO to implement the dispatch
@@ -56,7 +51,7 @@ class App extends Component {
       <Fragment>
         <Navbar />
         <div className={styles.container}>
-          <Search onSearch={this.onSearch} />
+          <Search onSearch={this.props.onSearch} />
           {this.props.books.length ? (
             this.props.books.map(this.renderBooks)
           ) : (
@@ -80,7 +75,8 @@ const mapStateToProps = state => ({
 });
 
 const mapToDispatchToProps = dispatch => ({
-  getBooks: () => dispatch(actionsCreators.getBooks())
+  getBooks: () => dispatch(actionsCreators.getBooks()),
+  onSearch: value => dispatch(actionsCreators.searchBook(value))
 });
 
 export default connect(mapStateToProps, mapToDispatchToProps)(App);
