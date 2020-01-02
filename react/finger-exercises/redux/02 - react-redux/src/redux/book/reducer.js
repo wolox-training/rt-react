@@ -1,4 +1,5 @@
 import { actions } from './actions';
+import { filteredBooks } from './utils';
 
 const initialState = {
   books: [],
@@ -24,7 +25,7 @@ function reducer(state = initialState, action) {
       state.books = state.originalData;
       return {
         ...state,
-        books: state.books.filter(book => book.name.toLowerCase().search(action.payload) !== -1)
+        books: filteredBooks(state.books, action.payload.search)
       };
     default:
       return state;

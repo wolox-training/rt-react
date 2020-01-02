@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '@screens/App';
-import './scss/index.scss';
-// eslint-disable-next-line import/first
 import { Provider } from 'react-redux';
+import App from '@screens/App';
 
+import './scss/index.scss';
 import registerServiceWorker from './registerServiceWorker';
 import store from './redux/store';
 
