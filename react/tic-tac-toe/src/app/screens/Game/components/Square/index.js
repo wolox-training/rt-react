@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-const Square = (props) => {
+function Square (props) {
   const onHandleClick = () => {
     const { id, onClick } = props;
     onClick(id);

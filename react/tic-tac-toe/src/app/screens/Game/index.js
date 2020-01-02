@@ -13,7 +13,7 @@ class Game extends React.Component {
     xIsNext: true
   }
   
-  handleClick(i) {
+  handleClick = i => {
     const { history, xIsNext, stepNumber} = this.state;
 
     const currHistory = history.slice(0, stepNumber + 1);
@@ -68,7 +68,7 @@ class Game extends React.Component {
         <div className={styles.gameBoard}>
           <Board 
             squares={current.squares}
-            onClick={ (i) => this.handleClick(i) }
+            onClick={ this.handleClick }
           />
         </div>
         <div className={styles.gameInfo}>
