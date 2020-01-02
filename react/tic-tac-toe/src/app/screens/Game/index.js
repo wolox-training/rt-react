@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
+import { calculateWinner } from './utils'
 
 function calculateWinner(squares) {
   const lines = [
@@ -31,11 +32,12 @@ class Game extends React.Component {
     stepNumber: 0,
     xIsNext: true
   }
+  
+  handleClick = i => {
+    const { history, xIsNext, stepNumber} = this.state;
 
-  handleClick(i) {
-    // eslint-disable-next-line react/no-access-state-in-setstate
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    const current = history[history.length - 1];
+    const currHistory = history.slice(0, stepNumber + 1);
+    const current = currHistory[currHistory.length - 1];
     const squares = current.squares.slice();
 
     if (calculateWinner(squares) || squares[i]) {
@@ -44,12 +46,9 @@ class Game extends React.Component {
 
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
-      history: history.concat([{
-        squares
-      }]),
-      stepNumber: history.length,
-      // eslint-disable-next-line react/no-access-state-in-setstate
-      xIsNext: !this.state.xIsNext
+      history: [...currHistory, {squares}],
+      stepNumber: currHistory.length,
+      xIsNext: !xIsNext
     });
   }
 
@@ -58,6 +57,14 @@ class Game extends React.Component {
       stepNumber: step,
       xIsNext: step % 2 === 0
     });
+  }
+
+  getStatus(winner) {
+    if (winner) {
+      return 'Winner: ' + winner;
+    } else {
+      return 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
   }
 
   render() {
@@ -76,21 +83,14 @@ class Game extends React.Component {
       );
     });
 
-    // eslint-disable-next-line init-declarations
-    let status;
-    if (winner) {
-      status = `Winner: ${winner}`;
-    } else {
-      status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
-    }
+    let status = this.getStatus(winner);
 
     return (
       <div className={styles.game}>
         <div className={styles.gameBoard}>
           <Board
             squares={current.squares}
-            // eslint-disable-next-line react/jsx-no-bind
-            onClick={(i) => this.handleClick(i)}
+            onClick={ this.handleClick }
           />
         </div>
         <div className={styles.gameInfo}>
