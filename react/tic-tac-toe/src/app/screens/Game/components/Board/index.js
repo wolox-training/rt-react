@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { array, func } from 'prop-types';
 
 import Square from '../Square';
 
@@ -42,9 +42,8 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  squares: PropTypes.array,
-  onClick: PropTypes.func
+  squares: array,
+  onClick: func
 };
 
 export default Board;
