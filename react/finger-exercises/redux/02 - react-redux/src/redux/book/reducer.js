@@ -15,7 +15,7 @@ function reducer(state = initialState, action) {
         ...state,
         books: action.payload
       };
-    case actions.ADD_TO_CART: // TODO to implement the logic
+    case actions.ADD_TO_CART:
       return {
         ...state,
         bookSelected: addToCart(state.bookSelected, action.payload.book)

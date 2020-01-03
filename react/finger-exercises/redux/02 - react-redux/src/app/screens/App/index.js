@@ -11,7 +11,6 @@ import ShoppingCart from './components/ShoppingCart';
 import styles from './styles.scss';
 
 class App extends Component {
-  // eslint-disable-next-line react/prop-types
   componentDidMount = () => this.props.getBooks();
 
   // TODO to implement the dispatch
@@ -62,8 +61,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  books: state.books,
-  bookSelected: state.bookSelected
+  books: state.books.books,
+  bookSelected: state.books.bookSelected
 });
 
 const mapToDispatchToProps = dispatch => ({
