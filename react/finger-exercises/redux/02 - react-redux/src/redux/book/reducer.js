@@ -1,5 +1,5 @@
 import { actions } from './actions';
-import { filteredBooks } from './utils';
+import { filteredBooks, addToCart, removeFromCart } from './utils';
 
 const initialState = {
   books: [],
@@ -18,14 +18,14 @@ function reducer(state = initialState, action) {
     case actions.ADD_TO_CART: // TODO to implement the logic
       return {
         ...state,
-        bookSelected: [...state.bookSelected, action.payload.book]
+        bookSelected: addToCart(state.bookSelected, action.payload.book)
       };
     case actions.ADD_ITEM: // TODO to implement the logic
       return { ...state };
     case actions.REMOVE_ITEM:
       return {
         ...state,
-        bookSelected: state.bookSelected.filter(book => book.id !== action.payload.bookId)
+        bookSelected: removeFromCart(state.bookSelected, action.payload.bookId)
       };
     case actions.SEARCH_ITEM:
       state.books = state.originalData;

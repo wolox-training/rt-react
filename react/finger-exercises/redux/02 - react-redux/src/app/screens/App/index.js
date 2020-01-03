@@ -3,6 +3,7 @@ import Navbar from '@components/Navbar';
 import Footer from '@components/Footer';
 import { connect } from 'react-redux';
 import bookActions from '@redux/book/actions';
+import { func, array } from 'prop-types';
 
 import Book from './components/Book';
 import Search from './components/Search';
@@ -51,9 +52,9 @@ class App extends Component {
             </div>
           )}
         </div>
-        {bookSelected.length ? (
+        {bookSelected.length && (
           <ShoppingCart data={bookSelected} addItem={this.addItem} removeItem={this.props.removeItem} />
-        ) : null}
+        )}
         <Footer />
       </Fragment>
     );
@@ -71,5 +72,12 @@ const mapToDispatchToProps = dispatch => ({
   addToCart: item => dispatch(bookActions.addToCart(item)),
   removeItem: itemId => dispatch(bookActions.removeItem(itemId))
 });
+
+App.prototypes = {
+  onSearch: func,
+  getBooks: func,
+  removeItem: func,
+  bookSelected: array
+};
 
 export default connect(mapStateToProps, mapToDispatchToProps)(App);
