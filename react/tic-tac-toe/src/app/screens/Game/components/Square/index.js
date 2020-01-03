@@ -1,4 +1,5 @@
 import React from 'react';
+import { string } from 'prop-types';
 
 import styles from './styles.module.scss';
 
@@ -17,6 +18,9 @@ function Square (props) {
     </button>
   );
 }
+
+Square.prototypes = {
+  value: string
+}
   
 export default Square;
-  
