@@ -14,9 +14,6 @@ class App extends Component {
   componentDidMount = () => this.props.getBooks();
 
   // TODO to implement the dispatch
-  addToCart = item => {};
-
-  // TODO to implement the dispatch
   addItem = itemId => {};
 
   // TODO to implement the dispatch
@@ -25,7 +22,7 @@ class App extends Component {
   CONFIGURATION_BUTTON = {
     add: {
       text: 'Add to cart',
-      function: this.addToCart
+      function: this.props.addToCart
     },
     remove: {
       text: 'Remove',
@@ -73,7 +70,8 @@ const mapStateToProps = state => ({
 
 const mapToDispatchToProps = dispatch => ({
   getBooks: () => dispatch(bookActions.getBooks()),
-  onSearch: value => dispatch(bookActions.searchBook(value))
+  onSearch: value => dispatch(bookActions.searchBook(value)),
+  addToCart: item => dispatch(bookActions.addToCart(item))
 });
 
 export default connect(mapStateToProps, mapToDispatchToProps)(App);

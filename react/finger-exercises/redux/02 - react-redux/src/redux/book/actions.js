@@ -21,7 +21,7 @@ const actionsCreators = {
   }),
   addToCart: item => ({
     type: actions.ADD_TO_CART,
-    payload: item
+    payload: { book: item }
   }),
   addItem: itemId => ({
     type: actions.ADD_ITEM,
