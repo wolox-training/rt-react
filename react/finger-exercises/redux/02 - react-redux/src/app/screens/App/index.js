@@ -16,9 +16,6 @@ class App extends Component {
   // TODO to implement the dispatch
   addItem = itemId => {};
 
-  // TODO to implement the dispatch
-  removeItem = itemId => {};
-
   CONFIGURATION_BUTTON = {
     add: {
       text: 'Add to cart',
@@ -26,7 +23,7 @@ class App extends Component {
     },
     remove: {
       text: 'Remove',
-      function: this.removeItem,
+      function: this.props.removeItem,
       isDanger: true
     }
   };
@@ -55,7 +52,7 @@ class App extends Component {
           )}
         </div>
         {bookSelected.length ? (
-          <ShoppingCart data={bookSelected} addItem={this.addItem} removeItem={this.removeItem} />
+          <ShoppingCart data={bookSelected} addItem={this.addItem} removeItem={this.props.removeItem} />
         ) : null}
         <Footer />
       </Fragment>
@@ -71,7 +68,8 @@ const mapStateToProps = state => ({
 const mapToDispatchToProps = dispatch => ({
   getBooks: () => dispatch(bookActions.getBooks()),
   onSearch: value => dispatch(bookActions.searchBook(value)),
-  addToCart: item => dispatch(bookActions.addToCart(item))
+  addToCart: item => dispatch(bookActions.addToCart(item)),
+  removeItem: itemId => dispatch(bookActions.removeItem(itemId))
 });
 
 export default connect(mapStateToProps, mapToDispatchToProps)(App);

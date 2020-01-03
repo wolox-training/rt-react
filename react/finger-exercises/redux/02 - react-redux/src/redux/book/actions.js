@@ -29,7 +29,7 @@ const actionsCreators = {
   }),
   removeItem: itemId => ({
     type: actions.REMOVE_ITEM,
-    payload: itemId
+    payload: { bookId: itemId }
   }),
   searchBook: value => ({
     type: actions.SEARCH_ITEM,
