@@ -10,10 +10,10 @@ const initialState = {
 function reducer(state = initialState, action) {
   switch (action.type) {
     case actions.GET_BOOKS:
-      state.originalData = action.payload;
       return {
         ...state,
-        books: action.payload
+        books: action.payload,
+        originalData: action.payload
       };
     case actions.ADD_TO_CART:
       return {

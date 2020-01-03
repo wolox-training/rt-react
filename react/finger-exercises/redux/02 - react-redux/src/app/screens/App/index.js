@@ -30,7 +30,7 @@ class App extends Component {
 
   renderBooks = item => {
     const { bookSelected } = this.props;
-    const showButton = !bookSelected.some(el => el.id === item.id);
+    const showButton = !bookSelected.some(({ id }) => id === item.id);
     const configButton = showButton ? this.CONFIGURATION_BUTTON.add : this.CONFIGURATION_BUTTON.remove;
     return <Book key={item.id} data={item} configButton={configButton} />;
   };
