@@ -13,9 +13,6 @@ import styles from './styles.scss';
 class App extends Component {
   componentDidMount = () => this.props.getBooks();
 
-  // TODO to implement the dispatch
-  addItem = itemId => {};
-
   CONFIGURATION_BUTTON = {
     add: {
       text: 'Add to cart',
@@ -52,7 +49,7 @@ class App extends Component {
           )}
         </div>
         {bookSelected.length && (
-          <ShoppingCart data={bookSelected} addItem={this.addItem} removeItem={removeItem} />
+          <ShoppingCart data={bookSelected} addItem={this.props.addItem} removeItem={removeItem} />
         )}
         <Footer />
       </Fragment>
@@ -69,7 +66,8 @@ const mapToDispatchToProps = dispatch => ({
   getBooks: () => dispatch(bookActions.getBooks()),
   onSearch: value => dispatch(bookActions.searchBook(value)),
   addToCart: item => dispatch(bookActions.addToCart(item)),
-  removeItem: itemId => dispatch(bookActions.removeItem(itemId))
+  removeItem: itemId => dispatch(bookActions.removeItem(itemId)),
+  addItem: itemId => dispatch(bookActions.addItem(itemId))
 });
 
 App.prototypes = {

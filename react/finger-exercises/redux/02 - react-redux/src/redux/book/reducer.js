@@ -20,8 +20,14 @@ function reducer(state = initialState, action) {
         ...state,
         bookSelected: addToCart(state.bookSelected, action.payload.book)
       };
-    case actions.ADD_ITEM: // TODO to implement the logic
-      return { ...state };
+    case actions.ADD_ITEM:
+      return {
+        ...state,
+        bookSelected: state.bookSelected.map(book => {
+          if (book.id === action.payload) book.quantity += 1;
+          return book;
+        })
+      };
     case actions.REMOVE_ITEM:
       return {
         ...state,
