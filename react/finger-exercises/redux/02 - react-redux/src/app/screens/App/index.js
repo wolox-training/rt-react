@@ -36,7 +36,7 @@ class App extends Component {
   };
 
   render() {
-    const { onSearch, books, bookSelected } = this.props;
+    const { onSearch, books, bookSelected, removeItem } = this.props;
 
     return (
       <Fragment>
@@ -52,7 +52,7 @@ class App extends Component {
           )}
         </div>
         {bookSelected.length && (
-          <ShoppingCart data={bookSelected} addItem={this.addItem} removeItem={this.props.removeItem} />
+          <ShoppingCart data={bookSelected} addItem={this.addItem} removeItem={removeItem} />
         )}
         <Footer />
       </Fragment>

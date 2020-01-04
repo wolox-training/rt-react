@@ -28,10 +28,9 @@ function reducer(state = initialState, action) {
         bookSelected: removeFromCart(state.bookSelected, action.payload.bookId)
       };
     case actions.SEARCH_ITEM:
-      state.books = state.originalData;
       return {
         ...state,
-        books: filteredBooks(state.books, action.payload.search)
+        books: filteredBooks(state.books, action.payload.search, state.originalData)
       };
     default:
       return state;

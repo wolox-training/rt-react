@@ -1,4 +1,5 @@
-export function filteredBooks(books, searchValue) {
+export function filteredBooks(books, searchValue, originalData) {
+  books = originalData;
   return books.filter(book => book.name.toLowerCase().search(searchValue) !== -1);
 }
 

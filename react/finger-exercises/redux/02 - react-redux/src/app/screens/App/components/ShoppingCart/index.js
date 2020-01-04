@@ -17,10 +17,10 @@ class ShoppingCart extends PureComponent {
   };
 
   render() {
-    const { data } = this.props;
+    const { data, toggleContent } = this.props;
     return (
       <Fragment>
-        <Button className={styles.buttonCart} onClick={this.props.toggleContent}>
+        <Button className={styles.buttonCart} onClick={toggleContent}>
           <i className="fa fa-shopping-cart" />
         </Button>
         <div className={`${styles.container} ${this.props.open ? styles.open : ''}`}>
@@ -36,7 +36,8 @@ class ShoppingCart extends PureComponent {
 ShoppingCart.propTypes = {
   data: arrayOf(bookSelectedPropType).isRequired,
   addItem: func.isRequired,
-  removeItem: func.isRequired
+  removeItem: func.isRequired,
+  toggleContent: func
 };
 
 const mapStateToProps = state => ({
