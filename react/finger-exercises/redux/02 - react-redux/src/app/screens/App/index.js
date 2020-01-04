@@ -33,7 +33,7 @@ class App extends Component {
   };
 
   render() {
-    const { onSearch, books, bookSelected, removeItem } = this.props;
+    const { onSearch, books, bookSelected, removeItem, addItem } = this.props;
 
     return (
       <Fragment>
@@ -49,7 +49,7 @@ class App extends Component {
           )}
         </div>
         {bookSelected.length && (
-          <ShoppingCart data={bookSelected} addItem={this.props.addItem} removeItem={removeItem} />
+          <ShoppingCart data={bookSelected} addItem={addItem} removeItem={removeItem} />
         )}
         <Footer />
       </Fragment>
@@ -59,7 +59,8 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   books: state.books.books,
-  bookSelected: state.books.bookSelected
+  bookSelected: state.books.bookSelected,
+  total: state.books.total
 });
 
 const mapToDispatchToProps = dispatch => ({
