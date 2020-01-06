@@ -10,7 +10,9 @@ import Item from './components/Item';
 import styles from './styles.scss';
 
 class ShoppingCart extends PureComponent {
-  componentDidUpdate = () => this.props.getTotalCart(this.props.data);
+  componentDidUpdate() {
+    this.props.getTotalCart(this.props.data);
+  }
 
   renderItem = item => {
     const { addItem, removeItem } = this.props;

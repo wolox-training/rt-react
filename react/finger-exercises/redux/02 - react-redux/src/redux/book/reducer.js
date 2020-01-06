@@ -33,7 +33,7 @@ function reducer(state = initialState, action) {
     case actions.SEARCH_ITEM:
       return {
         ...state,
-        books: filteredBooks(state.books, action.payload.search, state.originalData)
+        books: filteredBooks(state.originalData, action.payload.search)
       };
     default:
       return state;
