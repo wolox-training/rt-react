@@ -4,21 +4,21 @@ import { bookSelectedPropType } from '@constants/propTypes';
 import Button from '@components/Button';
 import { connect } from 'react-redux';
 import shoppingCartActions from '@redux/shoppingCart/actions';
+import classNames from 'classnames';
 
 import Item from './components/Item';
 import styles from './styles.scss';
 
-const classNames = require('classnames');
-
 class ShoppingCart extends PureComponent {
+  componentDidUpdate = () => this.props.getTotalCart(this.props.data);
+
   renderItem = item => {
     const { addItem, removeItem } = this.props;
     return <Item key={item.id} item={item} addItem={addItem} removeItem={removeItem} />;
   };
 
   render() {
-    const { data, toggleContent, getTotalCart, total, open } = this.props;
-    getTotalCart(data);
+    const { data, toggleContent, total, open } = this.props;
     return (
       <Fragment>
         <Button className={styles.buttonCart} onClick={toggleContent}>
