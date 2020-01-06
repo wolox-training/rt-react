@@ -1,5 +1,5 @@
 import { actions } from './actions';
-import { filteredBooks, addToCart, removeFromCart } from './utils';
+import { filteredBooks, addToCart, removeFromCart, addItemToCart } from './utils';
 
 const initialState = {
   books: [],
@@ -23,10 +23,7 @@ function reducer(state = initialState, action) {
     case actions.ADD_ITEM:
       return {
         ...state,
-        bookSelected: state.bookSelected.map(book => {
-          if (book.id === action.payload) book.quantity += 1;
-          return book;
-        })
+        bookSelected: addItemToCart(state.bookSelected, action.payload)
       };
     case actions.REMOVE_ITEM:
       return {

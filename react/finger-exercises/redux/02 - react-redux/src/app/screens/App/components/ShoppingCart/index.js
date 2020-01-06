@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { arrayOf, func, number } from 'prop-types';
+import { arrayOf, func, number, bool } from 'prop-types';
 import { bookSelectedPropType } from '@constants/propTypes';
 import Button from '@components/Button';
 import { connect } from 'react-redux';
@@ -7,6 +7,8 @@ import shoppingCartActions from '@redux/shoppingCart/actions';
 
 import Item from './components/Item';
 import styles from './styles.scss';
+
+const classNames = require('classnames');
 
 class ShoppingCart extends PureComponent {
   renderItem = item => {
@@ -22,7 +24,7 @@ class ShoppingCart extends PureComponent {
         <Button className={styles.buttonCart} onClick={toggleContent}>
           <i className="fa fa-shopping-cart" />
         </Button>
-        <div className={`${styles.container} ${open ? styles.open : ''}`}>
+        <div className={classNames(styles.container, { [styles.open]: open })}>
           <h1 className={styles.title}>Cart</h1>
           <ul className={styles.content}>{data.map(this.renderItem)}</ul>
           <h2 className={`${styles.title} ${styles.total}`}>Total: {total}</h2>
@@ -38,7 +40,8 @@ ShoppingCart.propTypes = {
   removeItem: func.isRequired,
   toggleContent: func,
   getTotalCart: func,
-  total: number
+  total: number,
+  open: bool
 };
 
 const mapStateToProps = state => ({
