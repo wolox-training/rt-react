@@ -72,10 +72,10 @@ class Game extends React.Component {
 
     const gamesHistory = this.props.games.map(game => {
       return (
-        <tr>
-          <td>game.player_one</td>
-          <td>game.player_two</td>
-          <td>game.winner</td>
+        <tr key={game.id}>
+          <td>{game.player_one}</td>
+          <td>{game.player_two}</td>
+          <td>{game.winner}</td>
         </tr>
       )
     });

@@ -2,15 +2,15 @@ import matchesService from '../../services/MatchesService';
 
 const actionCreators = {
   getMatches: () => async dispatch => {
-    dispatch({ type: 'GET_MATCHES'});
     const response = await matchesService.getMatches();
     if (response.ok) {
-      dispatch({
-        type: 'GET_MATCHES',
-        games: response.data
-      });
+      dispatch(actionCreators.getMatchesSuccess(response.data));
     }
-  }
-}
+  },
+  getMatchesSuccess: (games) => ({
+    type: 'GET_MATCHES_SUCCESS',
+    games
+  })
+};
 
 export default actionCreators;

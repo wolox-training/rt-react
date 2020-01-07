@@ -8,6 +8,11 @@ function reducer(state = initialState, action) {
     case 'GET_MATCHES':
       return {
         ...state,
+        loadingOff: false
+      };
+    case 'GET_MATCHES_SUCCESS':
+      return {
+        ...state,
         games: action.games,
         loadingOff: true
       }
