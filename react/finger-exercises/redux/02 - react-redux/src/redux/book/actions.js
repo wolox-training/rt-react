@@ -19,21 +19,21 @@ const actionsCreators = {
     type: actions.GET_BOOKS,
     payload: DATA
   }),
-  addToCart: item => ({
+  addToCart: book => ({
     type: actions.ADD_TO_CART,
-    payload: item
+    payload: { book }
   }),
   addItem: itemId => ({
     type: actions.ADD_ITEM,
     payload: itemId
   }),
-  removeItem: itemId => ({
+  removeItem: bookId => ({
     type: actions.REMOVE_ITEM,
-    payload: itemId
+    payload: { bookId }
   }),
   searchBook: value => ({
     type: actions.SEARCH_ITEM,
-    payload: value
+    payload: { search: value }
   })
 };
 

@@ -1,23 +1,18 @@
 import React, { PureComponent, Fragment } from 'react';
-import { arrayOf, func } from 'prop-types';
+import { arrayOf, func, number, bool } from 'prop-types';
 import { bookSelectedPropType } from '@constants/propTypes';
 import Button from '@components/Button';
+import { connect } from 'react-redux';
+import shoppingCartActions from '@redux/shoppingCart/actions';
+import classNames from 'classnames';
 
 import Item from './components/Item';
 import styles from './styles.scss';
 
 class ShoppingCart extends PureComponent {
-  state = {
-    open: false
-  };
-
-  toggleContent = () => {
-    this.setState(prevState => ({
-      open: !prevState.open
-    }));
-  };
-
-  total = (accumulator, currentValue) => accumulator + currentValue.quantity;
+  componentDidUpdate() {
+    this.props.getTotalCart(this.props.data);
+  }
 
   renderItem = item => {
     const { addItem, removeItem } = this.props;
@@ -25,16 +20,16 @@ class ShoppingCart extends PureComponent {
   };
 
   render() {
-    const { data } = this.props;
+    const { data, toggleContent, total, open } = this.props;
     return (
       <Fragment>
-        <Button className={styles.buttonCart} onClick={this.toggleContent}>
+        <Button className={styles.buttonCart} onClick={toggleContent}>
           <i className="fa fa-shopping-cart" />
         </Button>
-        <div className={`${styles.container} ${this.state.open ? styles.open : ''}`}>
+        <div className={classNames(styles.container, { [styles.open]: open })}>
           <h1 className={styles.title}>Cart</h1>
           <ul className={styles.content}>{data.map(this.renderItem)}</ul>
-          <h2 className={`${styles.title} ${styles.total}`}>Total: {data.reduce(this.total, 0)}</h2>
+          <h2 className={`${styles.title} ${styles.total}`}>Total: {total}</h2>
         </div>
       </Fragment>
     );
@@ -44,7 +39,21 @@ class ShoppingCart extends PureComponent {
 ShoppingCart.propTypes = {
   data: arrayOf(bookSelectedPropType).isRequired,
   addItem: func.isRequired,
-  removeItem: func.isRequired
+  removeItem: func.isRequired,
+  toggleContent: func,
+  getTotalCart: func,
+  total: number,
+  open: bool
 };
 
-export default ShoppingCart;
+const mapStateToProps = state => ({
+  open: state.shoppingCart.open,
+  total: state.shoppingCart.total
+});
+
+const mapToDispatchToProps = dispatch => ({
+  toggleContent: () => dispatch(shoppingCartActions.toggleContent()),
+  getTotalCart: data => dispatch(shoppingCartActions.getTotalCart(data))
+});
+
+export default connect(mapStateToProps, mapToDispatchToProps)(ShoppingCart);

@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import store from '@redux/store';
 import Navbar from '@components/Navbar';
 import Footer from '@components/Footer';
+import { connect } from 'react-redux';
+import bookActions from '@redux/book/actions';
+import { func, array } from 'prop-types';
 
 import Book from './components/Book';
 import Search from './components/Search';
@@ -9,70 +11,71 @@ import ShoppingCart from './components/ShoppingCart';
 import styles from './styles.scss';
 
 class App extends Component {
-  state = {
-    books: [],
-    bookSelected: []
-  };
-
-  componentDidMount() {
-    store.subscribe(() => {
-      const { books, bookSelected } = store.getState();
-      this.setState({ books, bookSelected });
-    });
-    // TODO to implement the dispatch
-  }
-
-  // TODO to implement the dispatch
-  onSearch = value => {};
-
-  // TODO to implement the dispatch
-  addToCart = item => {};
-
-  // TODO to implement the dispatch
-  addItem = itemId => {};
-
-  // TODO to implement the dispatch
-  removeItem = itemId => {};
+  componentDidMount = () => this.props.getBooks();
 
   CONFIGURATION_BUTTON = {
     add: {
       text: 'Add to cart',
-      function: this.addToCart
+      function: this.props.addToCart
     },
     remove: {
       text: 'Remove',
-      function: this.removeItem,
+      function: this.props.removeItem,
       isDanger: true
     }
   };
 
   renderBooks = item => {
-    const showButton = !this.state.bookSelected.some(el => el.id === item.id);
+    const { bookSelected } = this.props;
+    const showButton = !bookSelected.some(({ id }) => id === item.id);
     const configButton = showButton ? this.CONFIGURATION_BUTTON.add : this.CONFIGURATION_BUTTON.remove;
     return <Book key={item.id} data={item} configButton={configButton} />;
   };
 
   render() {
+    const { onSearch, books, bookSelected, removeItem, addItem } = this.props;
+
     return (
       <Fragment>
         <Navbar />
         <div className={styles.container}>
-          <Search onSearch={this.onSearch} />
-          {this.state.books.length ? (
-            this.state.books.map(this.renderBooks)
+          <Search onSearch={onSearch} />
+          {books.length ? (
+            books.map(this.renderBooks)
           ) : (
             <div className={styles.noData}>
               <h2 className={styles.title}>No Data</h2>
             </div>
           )}
         </div>
-        {this.state.bookSelected.length ? (
-          <ShoppingCart data={this.state.bookSelected} addItem={this.addItem} removeItem={this.removeItem} />
-        ) : null}
+        {bookSelected.length && (
+          <ShoppingCart data={bookSelected} addItem={addItem} removeItem={removeItem} />
+        )}
         <Footer />
       </Fragment>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  books: state.books.books,
+  bookSelected: state.books.bookSelected,
+  total: state.books.total
+});
+
+const mapToDispatchToProps = dispatch => ({
+  getBooks: () => dispatch(bookActions.getBooks()),
+  onSearch: value => dispatch(bookActions.searchBook(value)),
+  addToCart: item => dispatch(bookActions.addToCart(item)),
+  removeItem: itemId => dispatch(bookActions.removeItem(itemId)),
+  addItem: itemId => dispatch(bookActions.addItem(itemId))
+});
+
+App.prototypes = {
+  onSearch: func,
+  getBooks: func,
+  removeItem: func,
+  bookSelected: array
+};
+
+export default connect(mapStateToProps, mapToDispatchToProps)(App);
