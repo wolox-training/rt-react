@@ -57,8 +57,6 @@ class Game extends React.Component {
   }
 
   render() {
-    console.log(this.props.games);
-
     const { history } = this.state;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
@@ -70,6 +68,16 @@ class Game extends React.Component {
           <button type="button" onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
+    });
+
+    const gamesHistory = this.props.games.map(game => {
+      return (
+        <tr>
+          <td>game.player_one</td>
+          <td>game.player_two</td>
+          <td>game.winner</td>
+        </tr>
+      )
     });
 
     let status = this.getStatus(winner);
@@ -89,23 +97,29 @@ class Game extends React.Component {
         <div className={styles.partidas}>
           <h1>Partidas</h1>
           <Spinner name="circle" className={classNames({[styles.loadingOff]: this.props.loadingOff})}/>
+          <table>
+            <tbody>
+            <tr>
+              <th>Player One</th>
+              <th>Player Two</th>
+              <th>Winner</th>
+            </tr>
+            {gamesHistory}
+            </tbody>
+          </table>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    games: state.games,
-    loadingOff: state.loadingOff
-  }
-}
+const mapStateToProps = state => ({
+  games: state.games,
+  loadingOff: state.loadingOff
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getMatches: () => dispatch(actionCreators.getMatches())
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  getMatches: () => dispatch(actionCreators.getMatches())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

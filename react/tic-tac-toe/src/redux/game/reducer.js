@@ -1,5 +1,3 @@
-import matchesService from '../../services/MatchesService';
-
 const initialState = {
   games: [],
   loadingOff: false
@@ -8,14 +6,11 @@ const initialState = {
 function reducer(state = initialState, action) {
   switch(action.type) {
     case 'GET_MATCHES':
-      matchesService.getMatches()
-      .then(data => {
-        return {
-          ...state,
-          games: [...state.games, ...data.data],
-          loadingOff: true 
-        }
-      });
+      return {
+        ...state,
+        games: action.games,
+        loadingOff: true
+      }
     default:
       return state;
   }
