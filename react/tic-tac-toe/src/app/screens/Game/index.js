@@ -1,8 +1,13 @@
 import React from 'react';
+import Spinner from 'react-spinkit';
+import classNames from 'classnames';
+import { connect } from 'react-redux';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
 import { calculateWinner } from './utils'
+
+import actionCreators from '../../../redux/game/actions';
 
 class Game extends React.Component {
   state = {
@@ -11,6 +16,10 @@ class Game extends React.Component {
     }],
     stepNumber: 0,
     xIsNext: true
+  }
+  
+  componentDidMount() {
+    this.props.getMatches();
   }
   
   handleClick = i => {
@@ -61,6 +70,16 @@ class Game extends React.Component {
       );
     });
 
+    const gamesHistory = this.props.games.map(game => {
+      return (
+        <tr key={game.id}>
+          <td>{game.player_one}</td>
+          <td>{game.player_two}</td>
+          <td>{game.winner}</td>
+        </tr>
+      )
+    });
+
     let status = this.getStatus(winner);
 
     return (
@@ -75,9 +94,31 @@ class Game extends React.Component {
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
+        <div className={styles.games}>
+          <h1>Partidas</h1>
+          <table>
+            <tbody>
+            <tr>
+              <th>Player One</th>
+              <th>Player Two</th>
+              <th>Winner</th>
+            </tr>
+            { this.props.games ? gamesHistory : <Spinner name="circle" className={classNames({[styles.loadingOff]: this.props.loadingOff})}/>}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
 }
 
-export default Game;
+const mapStateToProps = state => ({
+  games: state.games,
+  loadingOff: state.loadingOff
+});
+
+const mapDispatchToProps = dispatch => ({
+  getMatches: () => dispatch(actionCreators.getMatches())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
