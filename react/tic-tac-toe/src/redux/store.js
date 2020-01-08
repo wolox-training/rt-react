@@ -1,6 +1,12 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk'
+import { reducer as formReducer } from 'redux-form';
 
 import games from '../redux/game/reducer';
 
-export default createStore(games, applyMiddleware(thunk));
+let appReducers = combineReducers({
+    games,
+    form: formReducer
+})
+
+export default createStore(appReducers, applyMiddleware(thunk));
