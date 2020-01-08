@@ -94,9 +94,8 @@ class Game extends React.Component {
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
-        <div className={styles.partidas}>
+        <div className={styles.games}>
           <h1>Partidas</h1>
-          <Spinner name="circle" className={classNames({[styles.loadingOff]: this.props.loadingOff})}/>
           <table>
             <tbody>
             <tr>
@@ -104,7 +103,7 @@ class Game extends React.Component {
               <th>Player Two</th>
               <th>Winner</th>
             </tr>
-            {gamesHistory}
+            { this.props.games ? gamesHistory : <Spinner name="circle" className={classNames({[styles.loadingOff]: this.props.loadingOff})}/>}
             </tbody>
           </table>
         </div>
