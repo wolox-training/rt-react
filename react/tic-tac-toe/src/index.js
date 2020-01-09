@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './app';
 import './config/i18n';
@@ -12,9 +13,11 @@ import store from './redux/store';
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <AppContainer>
-        <App />
-      </AppContainer>
+      <BrowserRouter>
+        <AppContainer>
+          <App />
+        </AppContainer>
+      </BrowserRouter>
     </Provider>,
     document.getElementById('root')
   );
