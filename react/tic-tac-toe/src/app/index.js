@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 import AuthorizatedRoute from './screens/Login/components/authorizatedRoute';
 import Game from './screens/Game';
@@ -9,12 +9,14 @@ import '../scss/application.scss';
 
 function App() {
   return (
-    <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/game" component={Game} />
-      <Redirect to="/login" />
-    </Switch>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/game" component={Game} />
+        <Redirect to="/login" />
+      </Switch> 
+    </BrowserRouter>
   )
 }
 
-export default App;
+export default withRouter(App);

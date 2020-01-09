@@ -1,5 +1,6 @@
-import loginService from '../../services/LoginService';
 import { push } from 'react-router-redux';
+
+import loginService from '../../services/LoginService';
 
 const actionCreators = {
 	loginUser: (email, password) => async dispatch => {
