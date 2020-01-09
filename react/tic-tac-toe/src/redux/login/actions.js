@@ -1,22 +1,24 @@
-import { push } from 'react-router-redux';
-
 import loginService from '../../services/LoginService';
+import { push } from 'connected-react-router';
 
 const actionCreators = {
 	loginUser: (email, password) => async dispatch => {
 		const response = await loginService.login(email, password);
 		if (response.ok) {
-			console.log('User logged');
-			dispatch(actionCreators.login(response.data.token));
+			dispatch(actionCreators.saveToken(response.data.token));
 			dispatch(push('/game'));
+			dispatch(actionCreators.userLogged());
 		} else {
 			console.log(response.data);
 			alert('Denied Access');
 		}
 	},
-	login: token => ({
-		type: 'LOGIN',
+	saveToken: token => ({
+		type: 'SAVE_TOKEN',
 		token
+	}),
+	userLogged: () => ({
+		type: 'USER_LOGGED'
 	})
 }
 

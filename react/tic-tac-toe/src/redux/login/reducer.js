@@ -5,11 +5,15 @@ const initialState = {
 
 function reducer(state = initialState, action){
 	switch(action.type) {
-		case 'LOGIN':
+		case 'SAVE_TOKEN':
 			return {
 				...state,
-				isLogged: true,
 				token: action.token
+			};
+		case 'USER_LOGGED':
+			return {
+				...state,
+				isLogged: true
 			}
 		default:
 			return state;

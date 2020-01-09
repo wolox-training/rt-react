@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 class AuthorizedRoute extends React.Component {
   render() {
-    const { component: Component, pending, isLogged, ...rest } = this.props
+    console.log('Authorizated routes');
+    const { component: Component, pending, isLogged, ...rest } = this.props;
     return (
       <Route {...rest} render={props => {
         return isLogged

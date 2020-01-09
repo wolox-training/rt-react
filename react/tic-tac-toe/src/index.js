@@ -2,22 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 
+import configureStore, { history } from './redux/store';
 import App from './app';
 import './config/i18n';
 import './scss/application.scss';
 import { register } from './serviceWorker';
-import store from './redux/store';
+
+const store = configureStore();
 
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <BrowserRouter>
-        <AppContainer>
-          <App />
-        </AppContainer>
-      </BrowserRouter>
+      <ConnectedRouter history={history}>
+        <BrowserRouter>
+          <AppContainer>
+            <App />
+          </AppContainer>
+        </BrowserRouter>
+      </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
   );

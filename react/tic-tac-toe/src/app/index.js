@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import AuthorizatedRoute from './screens/Login/components/authorizatedRoute';
 import Game from './screens/Game';
@@ -9,14 +10,17 @@ import '../scss/application.scss';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/game" component={Game} />
-        <Redirect to="/login" />
-      </Switch> 
-    </BrowserRouter>
+    <Switch>
+      <Route path="/login" component={Login} />
+      <AuthorizatedRoute path="/game" component={Game} />
+      <Redirect to="/login" />
+    </Switch> 
   )
 }
 
-export default withRouter(App);
+const mapStateToProps = state => ({
+  isLogged: state.login.isLogged,
+  token: state.login.token
+});
+
+export default connect(mapStateToProps)(App);
