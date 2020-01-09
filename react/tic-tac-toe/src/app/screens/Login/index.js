@@ -1,44 +1,24 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 
-import styles from './styles.module.scss';
-import validateActions from './components/validate';
-import renderField from './components/renderInput';
+import LoginForm from './components/loginForm';
 
-const onSubmit = values => {
-  alert(JSON.stringify(values));
+import actionCreators from '../../../redux/login/actions';
+
+class Login extends React.Component {
+  submit = values => {
+    this.props.loginUser(values.email, values.password);
+  };
+
+  render() {
+    return <LoginForm onSubmit={this.submit} />
+  };
 }
 
-let LoginForm = props => {
-  const { handleSubmit } = props;
-  return (
-    <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
-        <Field 
-          name="email" 
-          label="Email"
-          type="text" 
-          className={styles.inputForm}
-          component={renderField} 
-          validate={[validateActions.required, validateActions.email]}
-        />
-        <Field
-          name="password"
-          label="Password"
-          type="password"
-          className={styles.inputForm}
-          component={renderField}
-          validate={[validateActions.required, validateActions.minValue8]}
-        />
-        <button type="submit" className={styles.submitLogin}>Login</button>
-      </form>
-    </div>
-  );
-};
+const mapStateToProps = state => ({});
 
-LoginForm = reduxForm({
-  form: 'loginGame',
-  onSubmit
-})(LoginForm);
-  
-export default LoginForm;
+const mapDispatchToProps = dispatch => ({
+  loginUser: (email, password) => dispatch(actionCreators.loginUser(email, password))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
