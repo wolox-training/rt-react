@@ -3,9 +3,9 @@ import { Field, reduxForm } from 'redux-form';
 
 import styles from '../styles.module.scss';
 import validateActions from './validate';
-import renderField from './renderInput';
+import ImputLabel from './inputLabel';
 
-let LoginForm = props => {
+function LoginForm(props) {
   const { handleSubmit } = props;
   return (
     <div className={styles.container}>
@@ -15,7 +15,7 @@ let LoginForm = props => {
           label="Email"
           type="text" 
           className={styles.inputForm}
-          component={renderField} 
+          component={ImputLabel} 
           validate={[validateActions.required, validateActions.email]}
         />
         <Field
@@ -23,7 +23,7 @@ let LoginForm = props => {
           label="Password"
           type="password"
           className={styles.inputForm}
-          component={renderField}
+          component={ImputLabel}
           validate={[validateActions.required, validateActions.minValue8]}
         />
         <button type="submit" className={styles.submitLogin}>Login</button>

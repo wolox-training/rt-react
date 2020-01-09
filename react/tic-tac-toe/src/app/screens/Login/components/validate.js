@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { MIN_PASSWORD_LENGTH } from '../../../../constants/validateData';
+
 const minValue = min => value => 
 	value && value.length < min ? `Most be at least ${min}` : undefined;
 
@@ -8,7 +10,7 @@ const validateActions = {
 	email: value => 
 		value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
 		'Invalid email address' : undefined,
-	minValue8: minValue(8)
+	minValue8: minValue(MIN_PASSWORD_LENGTH)
 }
 
 export default validateActions;
