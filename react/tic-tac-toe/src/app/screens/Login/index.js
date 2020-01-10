@@ -11,8 +11,8 @@ class Login extends React.Component {
     if (tokenGame) this.props.setTokenFromLocalStorage(tokenGame);
   }
 
-  submit = values => {
-    this.props.loginUser(values.email, values.password);
+  submit = ({ email, password}) => {
+    this.props.loginUser(email, password);
   };
 
   render() {

@@ -8,8 +8,8 @@ import ImputLabel from './inputLabel';
 function LoginForm(props) {
   const { handleSubmit } = props;
   return (
-    <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+      <div className={styles.container}>
         <Field 
           name="email" 
           label="Email"
@@ -27,8 +27,8 @@ function LoginForm(props) {
           validate={[validateActions.required, validateActions.minValue8]}
         />
         <button type="submit" className={styles.submitLogin}>Login</button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

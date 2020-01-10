@@ -2,7 +2,8 @@
 
 .container {
   margin: 0 auto;
-  width: 300px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .input-container {
@@ -29,7 +30,6 @@
   background-color: $blue-solid;
   color: $white;
   border-radius: 5px;
-  margin-top: 5px;
   padding: 10px 20px;
   width: 100%;
 }
