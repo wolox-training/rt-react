@@ -24,7 +24,15 @@ const actionCreators = {
 	setTokenFromLocalStorage: token => dispatch => {
 		dispatch(actionCreators.saveToken(token));
 		dispatch(push('/game'));
-	}
+	},
+	logout: () => dispatch => {
+		localStorage.removeItem(TOKEN_GAME);
+		dispatch(actionCreators.clearToken());
+		dispatch(push('/login'));
+	},
+	clearToken: () => ({
+		type: 'CLEAR_TOKEN'
+	})
 }
 
 export default actionCreators;

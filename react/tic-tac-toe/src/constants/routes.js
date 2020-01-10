@@ -1,5 +1,6 @@
 export const ROUTES = {
   game: '/game',
   login: '/login',
-  notFound: '*'
+  notFound: '*',
+  profile: '/profile'
 }

@@ -1,6 +1,9 @@
 .game {
   display: flex;
   flex-direction: row;
+  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
 }
 
 .game-info {
