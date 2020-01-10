@@ -7,10 +7,10 @@ import games from '../redux/game/reducer';
 import login from '../redux/login/reducer';
 
 const createRootReducer = (history) => combineReducers({
-    router: connectRouter(history),
-    games,
-    login,
-    form: formReducer
+	router: connectRouter(history),
+	games,
+	login,
+	form: formReducer
 })
 
 export default createRootReducer;

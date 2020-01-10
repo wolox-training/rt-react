@@ -1,7 +1,7 @@
 const initialState = {
 	isLogged: false,
-  token: undefined,
-  pending: true
+	token: undefined,
+	pending: true
 };
 
 function reducer(state = initialState, action){
@@ -16,7 +16,7 @@ function reducer(state = initialState, action){
 			return {
 				...state,
 				pending: false
-      };
+			};
 		default:
 			return state;
 	}
