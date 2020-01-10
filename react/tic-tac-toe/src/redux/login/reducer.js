@@ -7,18 +7,18 @@ const initialState = {
 function reducer(state = initialState, action){
 	switch(action.type) {
 		case 'SAVE_TOKEN':
-			return {
-				...state,
-				token: action.token,
-				isLogged: true
-			};
+		return {
+			...state,
+			token: action.token,
+			isLogged: true
+		};
 		case 'GET_USER_LOGGED':
-			return {
-				...state,
-				pending: false
-			};
+		return {
+			...state,
+			pending: false
+		};
 		default:
-			return state;
+		return state;
 	}
 };
 

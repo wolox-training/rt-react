@@ -1,7 +1,7 @@
 import loginService from '../../services/LoginService';
 import { push } from 'connected-react-router';
 
-import { TOKEN_GAME } from '~constants/tokenGame';
+import { TOKEN_GAME } from '~constants/auth';
 
 const actionCreators = {
 	loginUser: (email, password) => async dispatch => {

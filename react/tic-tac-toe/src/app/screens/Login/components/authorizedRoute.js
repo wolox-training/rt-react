@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { TOKEN_GAME } from '~constants/tokenGame';
+import { TOKEN_GAME } from '~constants/auth';
 import actionCreators from '~redux/login/actions';
 
 class AuthorizedRoute extends React.Component {
