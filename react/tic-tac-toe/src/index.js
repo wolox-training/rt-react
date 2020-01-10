@@ -17,11 +17,9 @@ const render = () => {
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <BrowserRouter>
-          <AppContainer>
-            <App />
-          </AppContainer>
-        </BrowserRouter>
+        <AppContainer>
+          <App />
+        </AppContainer>
       </ConnectedRouter>
     </Provider>,
     document.getElementById('root')

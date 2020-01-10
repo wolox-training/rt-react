@@ -1,6 +1,7 @@
 const initialState = {
 	isLogged: false,
-	token: undefined
+  token: undefined,
+  pending: true
 };
 
 function reducer(state = initialState, action){
@@ -8,13 +9,14 @@ function reducer(state = initialState, action){
 		case 'SAVE_TOKEN':
 			return {
 				...state,
-				token: action.token
+				token: action.token,
+				isLogged: true
 			};
-		case 'USER_LOGGED':
+		case 'GET_USER_LOGGED':
 			return {
 				...state,
-				isLogged: true
-			}
+				pending: false
+      };
 		default:
 			return state;
 	}

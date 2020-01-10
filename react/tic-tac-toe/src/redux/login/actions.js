@@ -6,8 +6,7 @@ const actionCreators = {
 		const response = await loginService.login(email, password);
 		if (response.ok) {
 			dispatch(actionCreators.saveToken(response.data.token));
-			dispatch(push('/game'));
-			dispatch(actionCreators.userLogged());
+      dispatch(push('/game'));
 		} else {
 			console.log(response.data);
 			alert('Denied Access');
@@ -17,9 +16,9 @@ const actionCreators = {
 		type: 'SAVE_TOKEN',
 		token
 	}),
-	userLogged: () => ({
-		type: 'USER_LOGGED'
-	})
+	getUserLogged: () => ({
+		type: 'GET_USER_LOGGED'
+  })
 }
 
 export default actionCreators;
