@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { TOKEN_GAME } from '~constants/tokenGame';
 import actionCreators from '~redux/login/actions';
 
+import Navbar from '../../Navbar';
+
 class AuthorizedRoute extends React.Component {
   componentDidMount() {
     const tokenGame = localStorage.getItem(TOKEN_GAME);
@@ -21,7 +23,12 @@ class AuthorizedRoute extends React.Component {
       <Route {...rest} render={props => {
         if (pending) return <div>Loading...</div>
         return isLogged
-          ? <Component {...this.props} />
+          ? (
+            <div>
+              <Navbar />
+              <Component {...this.props} />
+            </div>
+            )
           : <Redirect to="/login" />
       }} />
     )
