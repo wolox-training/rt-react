@@ -14,3 +14,5 @@ export const TYPE_FIELDS = {
   text: 'text',
   submit: 'submit'
 }
+
+export const MIN_PASSWORD_LENGTH = 8;
