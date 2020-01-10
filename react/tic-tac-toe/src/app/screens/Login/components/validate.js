@@ -10,7 +10,7 @@ const validateActions = {
   email: value => 
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
     'Invalid email address' : undefined,
-    minValue8: minValue(MIN_PASSWORD_LENGTH)
+    minValuePassword: minValue(MIN_PASSWORD_LENGTH)
 }
 
 export default validateActions;

@@ -1,15 +1,16 @@
 import loginService from '../../services/LoginService';
 import { push } from 'connected-react-router';
 
+import { TOKEN_GAME } from '~constants/tokenGame';
+
 const actionCreators = {
 	loginUser: (email, password) => async dispatch => {
 		const response = await loginService.login(email, password);
 		if (response.ok) {
       dispatch(actionCreators.saveToken(response.data.token));
-      localStorage.setItem('tokenGame', response.data.token);
+      localStorage.setItem(TOKEN_GAME, response.data.token);
       dispatch(push('/game'));
 		} else {
-			console.log(response.data);
 			alert('Denied Access');
 		}
 	},
@@ -22,7 +23,7 @@ const actionCreators = {
   }),
   setTokenFromLocalStorage: token => dispatch => {
     dispatch(actionCreators.saveToken(token));
-    dispatch(push('game'));
+    dispatch(push('/game'));
   }
 }
 

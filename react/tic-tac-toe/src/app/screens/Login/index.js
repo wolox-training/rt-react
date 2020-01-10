@@ -6,12 +6,7 @@ import LoginForm from './components/loginForm';
 import actionCreators from '../../../redux/login/actions';
 
 class Login extends React.Component {
-  componentDidMount() {
-    const tokenGame = localStorage.getItem('tokenGame');
-    if (tokenGame) this.props.setTokenFromLocalStorage(tokenGame);
-  }
-
-  submit = ({ email, password}) => {
+  submit = ({ email, password }) => {
     this.props.loginUser(email, password);
   };
 
@@ -21,8 +16,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  loginUser: (email, password) => dispatch(actionCreators.loginUser(email, password)),
-  setTokenFromLocalStorage: token => dispatch(actionCreators.setTokenFromLocalStorage(token))
+  loginUser: (email, password) => dispatch(actionCreators.loginUser(email, password))
 });
 
 export default connect(null, mapDispatchToProps)(Login);

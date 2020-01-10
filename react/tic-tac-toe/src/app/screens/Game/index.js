@@ -70,15 +70,15 @@ class Game extends React.Component {
       );
     });
 
-    // const gamesHistory = this.props.games.map(game => {
-    //   return (
-    //     <tr key={game.id}>
-    //       <td>{game.player_one}</td>
-    //       <td>{game.player_two}</td>
-    //       <td>{game.winner}</td>
-    //     </tr>
-    //   )
-    // });
+    const gamesHistory = this.props.games.map(game => {
+      return (
+        <tr key={game.id}>
+          <td>{game.player_one}</td>
+          <td>{game.player_two}</td>
+          <td>{game.winner}</td>
+        </tr>
+      )
+    });
 
     let status = this.getStatus(winner);
 
@@ -103,7 +103,7 @@ class Game extends React.Component {
               <th>Player Two</th>
               <th>Winner</th>
             </tr>
-            {/* { this.props.games ? gamesHistory : <Spinner name="circle" className={classNames({[styles.loadingOff]: this.props.loadingOff})}/>} */}
+            { this.props.games ? gamesHistory : <Spinner name="circle" className={classNames({[styles.loadingOff]: this.props.loadingOff})}/>}
             </tbody>
           </table>
         </div>
@@ -113,8 +113,8 @@ class Game extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  games: state.games,
-  loadingOff: state.loadingOff
+  games: state.games.games,
+  loadingOff: state.games.loadingOff
 });
 
 const mapDispatchToProps = dispatch => ({

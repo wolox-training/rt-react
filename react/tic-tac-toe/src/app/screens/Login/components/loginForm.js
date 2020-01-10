@@ -5,28 +5,30 @@ import styles from '../styles.module.scss';
 import validateActions from './validate';
 import ImputLabel from './inputLabel';
 
+import { LOGIN_FIELDS, LABELS, TYPE_FIELDS } from '../constants';
+
 function LoginForm(props) {
   const { handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.container}>
         <Field 
-          name="email" 
-          label="Email"
-          type="text" 
+          name={LOGIN_FIELDS.email} 
+          label={LABELS.email}
+          type={TYPE_FIELDS.text} 
           className={styles.inputForm}
           component={ImputLabel} 
           validate={[validateActions.required, validateActions.email]}
         />
         <Field
-          name="password"
-          label="Password"
-          type="password"
+          name={LOGIN_FIELDS.password}
+          label={LABELS.password}
+          type={TYPE_FIELDS.password}
           className={styles.inputForm}
           component={ImputLabel}
-          validate={[validateActions.required, validateActions.minValue8]}
+          validate={[validateActions.required, validateActions.minValuePassword]}
         />
-        <button type="submit" className={styles.submitLogin}>Login</button>
+        <button type={TYPE_FIELDS.submit} className={styles.submitLogin}>Login</button>
       </div>
     </form>
   );
