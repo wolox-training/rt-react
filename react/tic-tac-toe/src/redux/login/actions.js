@@ -1,5 +1,5 @@
 import loginService from '../../services/LoginService';
-import { push } from 'connected-react-router';
+import { push, goBack } from 'connected-react-router';
 
 import { TOKEN_GAME } from '~constants/auth';
 
@@ -32,7 +32,10 @@ const actionCreators = {
 	},
 	clearToken: () => ({
 		type: 'CLEAR_TOKEN'
-	})
+	}),
+	goBackPage: () => dispatch => {
+		dispatch(goBack());
+	}
 }
 
 export default actionCreators;

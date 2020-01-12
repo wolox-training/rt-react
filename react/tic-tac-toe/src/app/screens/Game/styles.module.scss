@@ -1,8 +1,9 @@
 .game {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 800px;
   width: 100%;
 }
 
