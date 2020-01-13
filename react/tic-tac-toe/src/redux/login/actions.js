@@ -2,6 +2,7 @@ import loginService from '../../services/LoginService';
 import { push } from 'connected-react-router';
 
 import { TOKEN_GAME } from '~constants/auth';
+import { ROUTES } from '~constants/routes';
 
 const actionCreators = {
 	loginUser: (email, password) => async dispatch => {
@@ -9,7 +10,7 @@ const actionCreators = {
 		if (response.ok) {
 			dispatch(actionCreators.saveToken(response.data.token));
 			localStorage.setItem(TOKEN_GAME, response.data.token);
-			dispatch(push('/game'));
+			dispatch(push(ROUTES.game));
 		} else {
 			alert('Denied Access');
 		}
@@ -23,7 +24,7 @@ const actionCreators = {
 	}),
 	setTokenFromLocalStorage: token => dispatch => {
 		dispatch(actionCreators.saveToken(token));
-		dispatch(push('/game'));
+		dispatch(push(ROUTES.game));
 	}
 }
 
