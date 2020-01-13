@@ -113,8 +113,8 @@ class Game extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  games: state.games,
-  loadingOff: state.loadingOff
+  games: state.games.games,
+  loadingOff: state.games.loadingOff
 });
 
 const mapDispatchToProps = dispatch => ({
