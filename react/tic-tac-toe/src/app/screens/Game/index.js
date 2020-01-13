@@ -103,7 +103,7 @@ class Game extends React.Component {
               <th>Player Two</th>
               <th>Winner</th>
             </tr>
-            { this.props.games ? gamesHistory : <Spinner name="circle" className={classNames({[styles.loadingOff]: this.props.loadingOff})}/>}
+            { this.props.games ? gamesHistory : <Spinner name="circle" className={classNames({[styles.loading]: this.props.gamesLoading})}/>}
             </tbody>
           </table>
         </div>
@@ -114,7 +114,7 @@ class Game extends React.Component {
 
 const mapStateToProps = state => ({
   games: state.games.games,
-  loadingOff: state.games.loadingOff
+  gamesLoading: state.games.gamesLoading
 });
 
 const mapDispatchToProps = dispatch => ({
