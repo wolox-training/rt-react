@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import actionCreators from '~redux/login/actions';
 
 import styles from './styles.module.scss';
 
-class Navbar extends React.Component {
+class Navbar extends Component {
   render() {
     return (
       <nav className={styles.navbar}>

@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import styles from './styles.module.scss';
+import { BACK_LABEL } from './constants';
 
 import actionCreators from '~redux/login/actions';
 
 import profileImg from '../../assets/saco.jpg';
 
-class Profile extends React.Component {
+class Profile extends Component {
   render() {
     return (
       <main className={styles.main}>
@@ -28,7 +29,7 @@ class Profile extends React.Component {
           </div>
         </div>
         <a className={styles.linkBack} href="#" onClick={this.props.goBackPage}>
-          Back
+          {BACK_LABEL}
         </a>
       </main>
     )
