@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -24,10 +24,10 @@ class AuthorizedRoute extends React.Component {
         if (pending) return <div>Loading...</div>
         return isLogged
           ? (
-            <div>
+            <Fragment>
               <Navbar />
               <Component {...this.props} />
-            </div>
+            </Fragment>
             )
           : <Redirect to="/login" />
       }} />
