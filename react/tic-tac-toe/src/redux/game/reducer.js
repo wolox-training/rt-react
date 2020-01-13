@@ -1,9 +1,9 @@
-import { actions } from '~redux/game/actions';
 import { createReducer, completeReducer } from 'redux-recompose';
 
+import { actions } from './actions';
+
 const initialState = {
-  games: [],
-  loadingOff: false
+  games: []
 }
 
 const reducerDescription = {
