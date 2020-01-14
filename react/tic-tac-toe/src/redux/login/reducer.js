@@ -1,10 +1,10 @@
-import { createReducer, completeReducer } from 'redux-recompose';
+import { createReducer, completeReducer, onReadValue } from 'redux-recompose';
 
 import { actions } from './actions';
 
 const initialState = {
 	isLogged: false,
-	token: undefined
+	token: null
 };
 
 const reducerDescription = {
@@ -15,10 +15,7 @@ const reducerDescription = {
       token: action.payload,
       isLogged: true
     }),
-    [actions.CLEAR_TOKEN]: (state, action) => ({
-      ...state,
-      token: undefined
-    })
+    [actions.LOGOUT]: onReadValue()
   }
 };
 

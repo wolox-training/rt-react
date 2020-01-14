@@ -11,7 +11,7 @@ import { TOKEN_GAME } from '../../constants/auth';
 export const actions = createTypes([
   'LOGIN_USER',
   'SET_TOKEN',
-  'SET_TOKEN_FROM_LS'
+  'LOGOUT'
 ], '@LOGIN');
 
 const actionCreators = {
@@ -22,7 +22,8 @@ const actionCreators = {
     injections: [
       withPostSuccess((dispatch, response, state) => {
         localStorage.setItem(TOKEN_GAME, response.data.token);
-        dispatch(actionCreators.setSession(response.data.token));
+        dispatch(actionCreators.setToken(response.data.token));
+        dispatch(push(ROUTES.game));
       }),
       withFailure((dispatch, response, state) => {
         alert('Denied Access');
@@ -38,14 +39,15 @@ const actionCreators = {
     dispatch(actionCreators.setToken(token));
     dispatch(push(ROUTES.game));
   },
-  logout: () => dispatch => {
+  logout: () => {
     localStorage.removeItem(TOKEN_GAME);
-    dispatch(actionCreators.clearToken);
-    dispatch(push(ROUTES.login));
+    /*dispatch(push(ROUTES.login));*/
+    return {
+      type: actions.LOGOUT,
+      target: 'token',
+      payload: null
+    }
   },
-  clearToken: () => ({
-    type: actions.CLEAR_TOKEN
-  }),
   goBackPage: () => dispatch => {
     dispatch(goBack());
   }
