@@ -14,8 +14,7 @@ const reducerDescription = {
       ...state,
       token: action.payload,
       isLogged: true
-    }),
-    [actions.LOGOUT]: onReadValue()
+    })
   }
 };
 

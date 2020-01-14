@@ -39,14 +39,10 @@ const actionCreators = {
     dispatch(actionCreators.setToken(token));
     dispatch(push(ROUTES.game));
   },
-  logout: () => {
+  logout: () => dispatch => {
     localStorage.removeItem(TOKEN_GAME);
-    /*dispatch(push(ROUTES.login));*/
-    return {
-      type: actions.LOGOUT,
-      target: 'token',
-      payload: null
-    }
+    dispatch(actionCreators.setToken(null));
+    dispatch(push(ROUTES.login));
   },
   goBackPage: () => dispatch => {
     dispatch(goBack());
