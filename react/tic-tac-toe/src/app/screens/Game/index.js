@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 import Board from './components/Board';
 import { calculateWinner } from './utils'
 
+import { withConditionalRendering } from '../../components/AuthHoc';
 import actionCreators from '../../../redux/game/actions';
 
 class Game extends React.Component {
@@ -121,4 +122,4 @@ const mapDispatchToProps = dispatch => ({
   getMatches: () => dispatch(actionCreators.getMatches())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(withConditionalRendering(Game));
