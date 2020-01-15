@@ -5,7 +5,9 @@ describe('01 - matchers', () => {
     const value = pow(2, 2);
     expect(value).toBe(4);
   });
-  xit('pow returns undefined if there is no arguments', () => {
+  it('pow returns undefined if there is no arguments', () => {
+    const value = pow();
+    expect(value).toBe(undefined);
   });
   xit('pow returns undefined if there is just one argument', () => {
   });
