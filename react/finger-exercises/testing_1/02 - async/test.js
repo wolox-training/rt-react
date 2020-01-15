@@ -10,7 +10,8 @@ describe('02 - async', () => {
       expect(data).toBe('data');
     });
   });
-  xit('getData throws error if false is sent as argument (use async/await)', async () => {
+  it('getData throws error if false is sent as argument (use async/await)', async () => {
+    await expect(getData(false)).rejects.toThrow('error');
   });
   xit('getData throws error if false is sent as argument (avoid async/await)', () => {
   });
