@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 import { LABELS } from './constants';
 
 import actionCreators from '~redux/login/actions';
+import { withConditionalRendering } from '../../components/AuthHoc';
 
 import profileImg from '../../assets/saco.jpg';
 
@@ -38,4 +39,4 @@ const mapDispatchToProps = dispatch => ({
   goBackPage: () => dispatch(actionCreators.goBackPage())
 });
 
-export default connect(null, mapDispatchToProps)(Profile);
+export default connect(null, mapDispatchToProps)(withConditionalRendering(Profile));

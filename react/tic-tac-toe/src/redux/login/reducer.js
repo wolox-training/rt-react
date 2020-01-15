@@ -1,30 +1,23 @@
+import { createReducer, completeReducer, onReadValue } from 'redux-recompose';
+
+import { actions } from './actions';
+
 const initialState = {
 	isLogged: false,
-	token: undefined,
-	pending: true
+	token: null
 };
 
-function reducer(state = initialState, action){
-	switch(action.type) {
-		case 'SAVE_TOKEN':
-			return {
-				...state,
-				token: action.token,
-				isLogged: true
-			};
-		case 'GET_USER_LOGGED':
-			return {
-				...state,
-				pending: false
-			};
-		case 'CLEAR_TOKEN':
-			return {
-				...state,
-				token: undefined
-			}
-		default:
-			return state;
-	}
+const reducerDescription = {
+  primaryActions: [actions.LOGIN_USER],
+  override: {
+    [actions.SET_TOKEN]: (state, action) => ({
+      ...state,
+      token: action.payload,
+      isLogged: true
+    })
+  }
 };
+
+const reducer = createReducer(initialState, completeReducer(reducerDescription));
 
 export default reducer;
