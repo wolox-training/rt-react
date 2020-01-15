@@ -9,7 +9,9 @@ describe('01 - matchers', () => {
     const value = pow();
     expect(value).toBe(undefined);
   });
-  xit('pow returns undefined if there is just one argument', () => {
+  it('pow returns undefined if there is just one argument', () => {
+    const value = pow(1);
+    expect(value).toBe(undefined);
   });
   xit('pow returns an array of power results if array of pairs are sent as arguments', () => {
   });
