@@ -1,0 +1,44 @@
+.main {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+}
+
+.profile-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.img-container {
+  margin-right: 20px;
+  width: 25%;
+}
+
+.img {
+  max-width: 250px;
+  width: 100%;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.data {
+  margin-bottom: 10px;
+}
+
+.data-user {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.desc-container {
+  width: 75%;
+}
+
+.link-back {
+  float: right;
+}

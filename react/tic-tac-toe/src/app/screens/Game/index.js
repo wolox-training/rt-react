@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 import Board from './components/Board';
 import { calculateWinner } from './utils'
 
+import { withConditionalRendering } from '../../components/AuthHoc';
 import actionCreators from '../../../redux/game/actions';
 
 class Game extends React.Component {
@@ -103,7 +104,7 @@ class Game extends React.Component {
               <th>Player Two</th>
               <th>Winner</th>
             </tr>
-            { this.props.games ? gamesHistory : <Spinner name="circle" className={classNames({[styles.loadingOff]: this.props.loadingOff})}/>}
+            { this.props.games ? gamesHistory : <Spinner name="circle" className={classNames({[styles.loading]: this.props.gamesLoading})}/>}
             </tbody>
           </table>
         </div>
@@ -114,11 +115,11 @@ class Game extends React.Component {
 
 const mapStateToProps = state => ({
   games: state.games.games,
-  loadingOff: state.games.loadingOff
+  gamesLoading: state.games.gamesLoading
 });
 
 const mapDispatchToProps = dispatch => ({
   getMatches: () => dispatch(actionCreators.getMatches())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(withConditionalRendering(Game));
