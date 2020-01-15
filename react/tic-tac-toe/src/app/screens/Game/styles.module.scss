@@ -1,6 +1,10 @@
 .game {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
 }
 
 .game-info {
@@ -11,6 +15,6 @@
   margin-left: 30px;
 }
 
-.loading-off {
+.loading {
   display: none;
 }

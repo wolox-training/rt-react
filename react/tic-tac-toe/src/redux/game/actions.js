@@ -1,15 +1,16 @@
+import { createTypes } from 'redux-recompose';
 import matchesService from '../../services/MatchesService';
 
+export const actions = createTypes([
+  'GET_MATCHES'
+], '@GAMES');
+
 const actionCreators = {
-  getMatches: () => async dispatch => {
-    const response = await matchesService.getMatches();
-    if (response.ok) {
-      dispatch(actionCreators.getMatchesSuccess(response.data));
-    }
-  },
-  getMatchesSuccess: (games) => ({
-    type: 'GET_MATCHES_SUCCESS',
-    games
+  getMatches: games => ({
+    type: actions.GET_MATCHES,
+    target: 'games',
+    service: matchesService.getMatches,
+    payload: games
   })
 };
 
