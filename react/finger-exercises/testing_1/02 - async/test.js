@@ -13,6 +13,7 @@ describe('02 - async', () => {
   it('getData throws error if false is sent as argument (use async/await)', async () => {
     await expect(getData(false)).rejects.toThrow('error');
   });
-  xit('getData throws error if false is sent as argument (avoid async/await)', () => {
+  it('getData throws error if false is sent as argument (avoid async/await)', () => {
+    expect(getData(false)).rejects.toMatch('error');
   });
 });
