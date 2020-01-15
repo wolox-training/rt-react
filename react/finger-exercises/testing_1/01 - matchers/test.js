@@ -17,6 +17,8 @@ describe('01 - matchers', () => {
     const value = pow([2, 2], [4, 4]);
     expect(value).toEqual([4, 256]);
   });
-  xit('pow returns undefined in the right position of the result array if pair is not as expected', () => {
+  it('pow returns undefined in the right position of the result array if pair is not as expected', () => {
+    const value = pow([2, 2], [4]);
+    expect(value).toEqual([4, undefined]);
   });
 });
