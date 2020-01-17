@@ -21,15 +21,21 @@ describe('Test - Store + reducer integration testing with mocked store', () => {
   })
 
   it('Check SimpleCalculator Prop matches with initialState', () => {
+    expect(wrapper.find('SimpleCalculator').props().calculatorValue)
+      .toBe(initialState.calculatorValue);
   });
 
   it('Check ADD action dispatched with the mocked store to be the expected action', () => {
     let action;
     store.dispatch(actionCreators.add());
     action = store.getActions();
+    expect(action[0].type).toEqual(actions.ADD);
   });
 
   it('Check SUBSTRACT action dispatched with the mocked store to be the expected action', () => {
+    let action;
+    store.dispatch(actionCreators.substract());
+    action = store.getActions();
     expect(action[0].type).toBe(actions.SUBSTRACT);
   });
 });
