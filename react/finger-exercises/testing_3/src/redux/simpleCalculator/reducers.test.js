@@ -4,11 +4,13 @@ import { actions } from './actions'
 
 describe('Reducer --- Test simple calculator reducer', () => {
   it('Reducer for ADD action', () => {
+    let state = { calculatorValue: 11};
     expect(state).toEqual({ calculatorValue: 11 });
   });
 
   it('Reducer for SUBSTRACT action', () => {
     let state = { calculatorValue: 10 };
     state = reducer(state, { type: actions.SUBSTRACT });
+    expect(state).toEqual({ calculatorValue: 9 });
   });
 });
