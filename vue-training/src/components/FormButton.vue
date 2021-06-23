@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .form-button {
     border-radius: 10px;
     height: 45px;

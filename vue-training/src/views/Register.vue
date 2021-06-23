@@ -9,6 +9,7 @@
             :key="key"
             :input="input"
             v-model="input.value"
+            :validator="$v.inputs[key]"
           )
           FormButton(:button="signUpBtn" @handleClick="handleSignUp")
           hr.buttons-line
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import { required, email } from 'vuelidate/lib/validators'
 import FormInput from '@/components/FormInput.vue'
 import FormButton from '@/components/FormButton.vue'
 
@@ -39,8 +41,31 @@ export default {
       }
     }
   },
+  validations: {
+    inputs: {
+      email: {
+        value: { required, email }
+      },
+      password: {
+        value: {
+          required,
+          strongPass (value) {
+            return (
+              /[A-Z]/.test(value) &&
+              /[0-9]/.test(value)
+            )
+          }
+        }
+      }
+    }
+  },
   methods: {
     handleSignUp: function () {
+      this.$v.$touch()
+      if (this.$v.$error) {
+        return
+      }
+
       console.log(`
         {
           "user": {
