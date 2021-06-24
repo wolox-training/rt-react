@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    inputChange: function (event) {
+    inputChange (event) {
       this.$emit('input', event.target.value)
     }
   }
