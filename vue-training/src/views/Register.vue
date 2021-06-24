@@ -10,9 +10,9 @@
             :input='input'
             v-model='input.value'
           )
-          form-button(:button='signUpBtn' @handleClick='handleSignUp')
+          form-button(:button='signUpBtn' @handle-click='handleSignUp')
           hr.buttons-line
-          FormButton(:button='loginBtn' @handleClick='handleLogin')
+          FormButton(:button='loginBtn' @handle-click='handleLogin')
 </template>
 
 <script>
