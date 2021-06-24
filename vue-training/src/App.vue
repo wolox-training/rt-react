@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Register from '@/views/Register.vue'
+import Register from '@/views/Register'
 
 export default {
   components: {

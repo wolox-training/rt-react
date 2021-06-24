@@ -18,8 +18,8 @@
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
-import FormInput from '@/components/FormInput.vue'
-import FormButton from '@/components/FormButton.vue'
+import FormInput from '@/components/FormInput'
+import FormButton from '@/components/FormButton'
 
 export default {
   name: 'Register',
