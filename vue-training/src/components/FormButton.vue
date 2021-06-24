@@ -2,8 +2,9 @@
   .buttons-container
     button.form-button(
       :class='button.class'
-      @click='handleSubmit')
-        | {{ button.text }}
+      @click='handleSubmit'
+    )
+      | {{ button.text }}
 </template>
 
 <script>
@@ -36,7 +37,7 @@ export default {
 
     &.sign-up {
       border: none;
-      color: #fff;
+      color: $white;
       background-color: $light-green;
       margin-bottom: 20px;
     }
