@@ -1,18 +1,18 @@
 <template lang="pug">
   #app
     .main-container
-      img.header-image(alt="Wolox logo" src="@/assets/header-image.png")
+      img.header-image(alt='Wolox logo' src='@/assets/header-image.png')
       .form-container
         form
-          FormInput(
-            v-for="(input, key) in inputs"
-            :key="key"
-            :input="input"
-            v-model="input.value"
+          form-input(
+            v-for='(input, key) in inputs'
+            :key='key'
+            :input='input'
+            v-model='input.value'
           )
-          FormButton(:button="signUpBtn" @handleClick="handleSignUp")
+          form-button(:button='signUpBtn' @handleClick='handleSignUp')
           hr.buttons-line
-          FormButton(:button="loginBtn" @handleClick="handleLogin")
+          FormButton(:button='loginBtn' @handleClick='handleLogin')
 </template>
 
 <script>
@@ -21,7 +21,7 @@ import FormButton from '@/components/FormButton.vue'
 
 export default {
   name: 'Register',
-  data: function () {
+  data () {
     return {
       inputs: {
         firstName: { label: 'First name', type: 'text', value: '' },
@@ -40,7 +40,7 @@ export default {
     }
   },
   methods: {
-    handleSignUp: function () {
+    handleSignUp () {
       console.log(`
         {
           "user": {
@@ -54,7 +54,7 @@ export default {
         }
       `)
     },
-    handleLogin: function () {
+    handleLogin () {
       console.log('[handle-login]')
     }
   },
@@ -66,10 +66,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import "@/scss/variables.scss";
+
   .main-container {
     align-items: center;
-    background-color: #f4f4f4;
-    border-top: solid 4px #00adee;
+    background-color: $white-smoke;
+    border-top: solid 4px $deep-sky-blue;
     display: flex;
     flex-direction: column;
     font-family: sans-serif;
@@ -89,7 +91,7 @@ export default {
   }
 
   .buttons-line {
-    border: 1px solid #e9e9e9;
+    border: 1px solid $mercury;
     margin: 0 0 20px;
   }
 </style>

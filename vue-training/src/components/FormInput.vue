@@ -1,10 +1,11 @@
 <template lang="pug">
   .form-input-container
-    label.form-label {{ input.label }}
+    label.form-label
+      | {{ input.label }}
     input.form-input(
-      :type="input.type"
-      :value="input.value"
-      @input="$emit('input', $event.target.value)"
+      :type='input.type'
+      :value='input.value'
+      @input='inputChange($event)'
     )
 </template>
 
@@ -12,12 +13,24 @@
 export default {
   name: 'FormInput',
   props: {
-    input: Object
+    input: {
+      type: Object,
+      default: () => ({
+        label: '',
+        type: '',
+        value: ''
+      })
+    }
+  },
+  methods: {
+    inputChange: function (event) {
+      this.$emit('input', event.target.value)
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .form {
     &-container {
       width: 100%;
