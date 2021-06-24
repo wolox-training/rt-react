@@ -3,9 +3,9 @@
     label.form-label
       | {{ input.label }}
     input.form-input(
-      :type="input.type"
-      :value="input.value"
-      @input="$emit('input', $event.target.value)"
+      :type='input.type'
+      :value='input.value'
+      @input='inputChange($event)'
     )
     label.error(v-if="showRequiredError")
       | This field is required
@@ -19,7 +19,14 @@
 export default {
   name: 'FormInput',
   props: {
-    input: Object,
+    input: {
+      type: Object,
+      default: () => ({
+        label: '',
+        type: '',
+        value: ''
+      })
+    },
     validator: Object
   },
   computed: {
@@ -34,6 +41,11 @@ export default {
     },
     showStrongPassError: function () {
       return (this.getIfHasError && this.validator.value.strongPass === false)
+    }
+  },
+  methods: {
+    inputChange: function (event) {
+      this.$emit('input', event.target.value)
     }
   }
 }
