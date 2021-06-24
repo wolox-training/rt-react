@@ -1,21 +1,20 @@
 <template lang="pug">
-  #app
-    .main-container
-      img.header-image(alt='Wolox logo' src='@/assets/header-image.png')
-      p.registered-message(v-if="userRegistered")
-        | User registered successfully!
-      .form-container
-        form
-          form-input(
-            v-for='(input, key) in inputs'
-            :key='key'
-            :input='input'
-            v-model='input.value'
-            :validator='$v.inputs[key]'
-          )
-          form-button(:button='signUpBtn' @handle-click='handleSignUp')
-          hr.buttons-line
-          FormButton(:button='loginBtn' @handle-click='handleLogin')
+  .main-container
+    img.header-image(alt='Wolox logo' src='@/assets/header-image.png')
+    p.registered-message(v-if="userRegistered")
+      | User registered successfully!
+    .form-container
+      form
+        form-input(
+          v-for='(input, key) in inputs'
+          :key='key'
+          :input='input'
+          v-model='input.value'
+          :validator='$v.inputs[key]'
+        )
+        form-button(:button='signUpBtn' @handle-click='handleSignUp')
+        hr.buttons-line
+        FormButton(:button='loginBtn' @handle-click='handleLogin')
 </template>
 
 <script>
@@ -84,15 +83,18 @@ export default {
       registerUser(user)
         .then(response => {
           if (response.ok) {
-            this.showRegisteredMessage()
+            this.redirectLogin()
           }
         })
     },
     handleLogin () {
-      console.log('[handle-login]')
+      this.redirectLogin()
     },
     showRegisteredMessage () {
       this.userRegistered = true
+    },
+    redirectLogin () {
+      this.$router.push({ name: 'login' })
     }
   },
   components: {

@@ -1,13 +1,4 @@
 <template lang="pug">
-  register
+  #app
+    router-view
 </template>
-
-<script>
-import Register from '@/views/Register'
-
-export default {
-  components: {
-    Register
-  }
-}
-</script>

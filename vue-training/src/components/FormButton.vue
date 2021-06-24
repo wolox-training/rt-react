@@ -2,7 +2,7 @@
   .buttons-container
     button.form-button(
       :class='button.class'
-      @click='handleSubmit'
+      @click.prevent='handleSubmit'
     )
       | {{ button.text }}
 </template>
