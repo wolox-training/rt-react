@@ -2,6 +2,8 @@
   #app
     .main-container
       img.header-image(alt='Wolox logo' src='@/assets/header-image.png')
+      p.registered-message(v-if="userRegistered")
+        | User registered successfully!
       .form-container
         form
           form-input(
@@ -18,6 +20,7 @@
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
+import { registerUser } from '@/services/UserService'
 import FormInput from '@/components/FormInput'
 import FormButton from '@/components/FormButton'
 
@@ -38,7 +41,8 @@ export default {
       loginBtn: {
         text: 'Login',
         class: 'login'
-      }
+      },
+      userRegistered: false
     }
   },
   validations: {
@@ -65,8 +69,7 @@ export default {
       if (this.$v.$error) {
         return
       }
-
-      console.log(`
+      const user = `
         {
           "user": {
             "email": ${this.inputs.email.value},
@@ -77,10 +80,19 @@ export default {
             "locale": "en"
           }
         }
-      `)
+      `
+      registerUser(user)
+        .then(response => {
+          if (response.ok) {
+            this.showRegisteredMessage()
+          }
+        })
     },
     handleLogin () {
       console.log('[handle-login]')
+    },
+    showRegisteredMessage () {
+      this.userRegistered = true
     }
   },
   components: {
@@ -118,5 +130,10 @@ export default {
   .buttons-line {
     border: 1px solid $mercury;
     margin: 0 0 20px;
+  }
+
+  .registered-message {
+    margin: 0 0 30px;
+    color: $green;
   }
 </style>

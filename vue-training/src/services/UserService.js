@@ -1,4 +1,4 @@
-import api from 'src/config/api';
+import api from '@/config/api'
 
-export const registerUser = (user) => api.post('/users', user)
-  .then(response => console.log('[response]', response));
+export const registerUser = (user = {}) => api.post('/users', user)
+  .then(response => response)
