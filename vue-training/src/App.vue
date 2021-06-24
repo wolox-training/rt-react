@@ -9,7 +9,7 @@
 </template>
 
 <style lang="scss">
-@import "./scss/_colors.scss";
+@import "./scss/variables.scss";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
