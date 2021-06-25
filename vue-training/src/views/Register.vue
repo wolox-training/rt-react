@@ -1,7 +1,7 @@
 <template lang="pug">
   .main-container
     img.header-image(alt='Wolox logo' src='@/assets/header-image.png')
-    p.registered-message(v-if="userRegistered")
+    p.registered-message(v-if='userRegistered')
       | User registered successfully!
     .form-container
       form
