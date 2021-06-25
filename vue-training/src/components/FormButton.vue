@@ -3,6 +3,7 @@
     button.form-button(
       :class='button.class'
       @click.prevent='handleSubmit'
+      type='button'
     )
       | {{ button.text }}
 </template>

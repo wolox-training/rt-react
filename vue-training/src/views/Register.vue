@@ -1,8 +1,6 @@
 <template lang="pug">
   .main-container
     img.header-image(alt='Wolox logo' src='@/assets/header-image.png')
-    p.registered-message(v-if='userRegistered')
-      | User registered successfully!
     .form-container
       form
         form-input(
@@ -40,8 +38,7 @@ export default {
       loginBtn: {
         text: 'Login',
         class: 'login'
-      },
-      userRegistered: false
+      }
     }
   },
   validations: {
@@ -89,9 +86,6 @@ export default {
     },
     handleLogin () {
       this.redirectLogin()
-    },
-    showRegisteredMessage () {
-      this.userRegistered = true
     },
     redirectLogin () {
       this.$router.push({ name: 'login' })
