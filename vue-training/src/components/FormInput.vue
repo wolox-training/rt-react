@@ -27,19 +27,29 @@ export default {
         value: ''
       })
     },
-    validator: Object
+    validator: {
+      type: Object,
+      default: () => ({
+        $error: false,
+        value: {
+          required: false,
+          email: true,
+          strongPass: false
+        }
+      })
+    }
   },
   computed: {
-    getIfHasError: function () {
+    getIfHasError () {
       return this.validator && this.validator.$error
     },
-    showRequiredError: function () {
+    showRequiredError () {
       return (this.getIfHasError && this.validator.value.required === false)
     },
-    showEmailError: function () {
+    showEmailError () {
       return (this.getIfHasError && this.validator.value.email === false)
     },
-    showStrongPassError: function () {
+    showStrongPassError () {
       return (this.getIfHasError && this.validator.value.strongPass === false)
     }
   },
@@ -52,6 +62,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import '@/scss/variables.scss';
+
   .form {
     &-container {
       width: 100%;
@@ -81,7 +93,7 @@ export default {
   }
 
   .error {
-    color: #ff0000;
+    color: $red;
     font-size: 12px;
   }
 </style>
