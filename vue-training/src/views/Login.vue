@@ -51,9 +51,7 @@ export default {
         value: { required, email }
       },
       password: {
-        value: {
-          required
-        }
+        value: { required }
       }
     }
   },
