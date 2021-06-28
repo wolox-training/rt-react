@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
+import NavBar from '@/components/NavBar'
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,8 @@ const routes = [
   },
   {
     path: '/',
-    redirect: '/login'
+    name: 'navbar',
+    component: NavBar
   }
 ]
 
