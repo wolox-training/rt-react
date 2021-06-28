@@ -1,6 +1,6 @@
 <template lang="pug">
   img.header-image(
-    :class="imageClass"
+    :class='imageClass'
     alt='Wolox logo'
     src='@/assets/header-image.png'
   )

@@ -1,8 +1,8 @@
 <template lang="pug">
   .main
     .header-container
-      header-image(image-class="nav-image")
-      router-link.logout-link(to="/login" @click.native="removeToken")
+      header-image(image-class='nav-image')
+      router-link.logout-link(to='/login' @click.native='removeToken')
         | Logout
 </template>
 

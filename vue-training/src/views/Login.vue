@@ -80,8 +80,8 @@ export default {
     handleSignUp () {
       this.redirect('register')
     },
-    redirect (path) {
-      this.$router.push({ name: path })
+    redirect (name) {
+      this.$router.push({ name })
     }
   }
 }
