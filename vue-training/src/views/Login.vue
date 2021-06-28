@@ -51,15 +51,7 @@ export default {
         value: { required, email }
       },
       password: {
-        value: {
-          required,
-          strongPass (value) {
-            return (
-              /[A-Z]/.test(value) &&
-              /[0-9]/.test(value)
-            )
-          }
-        }
+        value: { required }
       }
     }
   },
