@@ -52,13 +52,7 @@ export default {
       },
       password: {
         value: {
-          required,
-          strongPass (value) {
-            return (
-              /[A-Z]/.test(value) &&
-              /[0-9]/.test(value)
-            )
-          }
+          required
         }
       }
     }
