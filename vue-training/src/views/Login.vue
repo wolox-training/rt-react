@@ -80,12 +80,16 @@ export default {
       sessionUser(user)
         .then(response => {
           if (response.ok) {
-            console.log('[access-token]', response.data.access_token)
+            localStorage.token = response.data.access_token
+            this.redirect('home')
           }
         })
     },
     handleSignUp () {
-      this.$router.push({ name: 'register' })
+      this.redirect('register')
+    },
+    redirect (path) {
+      this.$router.push({ name: path })
     }
   }
 }

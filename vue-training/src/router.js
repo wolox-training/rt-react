@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: '/',
-    name: 'navbar',
+    name: 'home',
     component: NavBar
   }
 ]

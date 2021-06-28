@@ -2,7 +2,7 @@
   .main
     .header-container
       header-image(image-class="nav-image")
-      router-link.logout-link(to="/login")
+      router-link.logout-link(to="/login" @click.native="removeToken")
         | Logout
 </template>
 
@@ -13,6 +13,13 @@ export default {
   name: 'NavBar',
   components: {
     HeaderImage
+  },
+  methods: {
+    removeToken () {
+      if (localStorage.token) {
+        localStorage.removeItem('token')
+      }
+    }
   }
 }
 </script>
