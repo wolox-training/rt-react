@@ -41,9 +41,7 @@ export default {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    max-width: 1024px;
-    padding-top: 2px;
-    width: 100%;
+    padding: 2px 150px 0;
   }
 
   .logout-link {
