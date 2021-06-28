@@ -12,7 +12,7 @@
         )
         form-button(:button='signUpBtn' @handle-click='handleSignUp')
         hr.buttons-line
-        form-button(:button='loginBtn' @handle-click='handleLogin' )
+        form-button(:button='loginBtn' @handle-click='handleLogin')
 </template>
 
 <script>
