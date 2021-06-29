@@ -1,10 +1,11 @@
 import { create } from 'apisauce'
 
 const api = create({
-  baseURL: 'https://private-anon-2f62f7c95e-wbooksapi.apiary-mock.com/api/v1',
+  baseURL: 'https://private-anon-f4a338b001-wbooksapi.apiary-mock.com/api/v1',
   headers: {
     'Content-Type': 'application/json',
-    Accept: 'application/json'
+    Accept: 'application/json',
+    Authorization: localStorage.token
   }
 })
 
