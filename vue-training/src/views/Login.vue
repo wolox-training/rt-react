@@ -10,35 +10,38 @@
           v-model='input.value'
           :validator='$v.inputs[key]'
         )
-        form-button(:button='signUpBtn' @handle-click='handleSignUp')
-        hr.buttons-line
         form-button(:button='loginBtn' @handle-click='handleLogin')
+        hr.buttons-line
+        form-button(:button='signUpBtn' @handle-click='handleSignUp')
 </template>
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
-import { registerUser } from '@/services/UserService'
+import { sessionUser } from '@/services/UserService'
 import HeaderImage from '@/components/HeaderImage'
 import FormInput from '@/components/FormInput'
 import FormButton from '@/components/FormButton'
 
 export default {
-  name: 'Register',
+  name: 'Login',
+  components: {
+    FormButton,
+    FormInput,
+    HeaderImage
+  },
   data () {
     return {
       inputs: {
-        firstName: { label: 'First name', type: 'text', value: '' },
-        lastName: { label: 'Last name', type: 'text', value: '' },
         email: { label: 'Email', type: 'email', value: '' },
         password: { label: 'Password', type: 'password', value: '' }
       },
       signUpBtn: {
         text: 'Sign up',
-        class: 'primary'
+        class: 'secondary'
       },
       loginBtn: {
         text: 'Login',
-        class: 'secondary'
+        class: 'primary'
       }
     }
   },
@@ -48,54 +51,38 @@ export default {
         value: { required, email }
       },
       password: {
-        value: {
-          required,
-          strongPass (value) {
-            return (
-              /[A-Z]/.test(value) &&
-              /[0-9]/.test(value)
-            )
-          }
-        }
+        value: { required }
       }
     }
   },
   methods: {
-    handleSignUp () {
+    handleLogin () {
       this.$v.$touch()
       if (this.$v.$error) {
         return
       }
-      const user = `
-        {
-          "user": {
-            "email": ${this.inputs.email.value},
-            "password": ${this.inputs.password.value},
-            "password_confirmation": ${this.inputs.password.value},
-            "first_name": ${this.inputs.firstName.value},
-            "last_name": ${this.inputs.lastName.value},
-            "locale": "en"
-          }
+
+      const user = {
+        session: {
+          email: this.inputs.email.value,
+          password: this.inputs.password.value
         }
-      `
-      registerUser(user)
+      }
+
+      sessionUser(user)
         .then(response => {
           if (response.ok) {
-            this.redirectLogin()
+            localStorage.token = response.data.access_token
+            this.redirect('books')
           }
         })
     },
-    handleLogin () {
-      this.redirectLogin()
+    handleSignUp () {
+      this.redirect('register')
     },
-    redirectLogin () {
-      this.$router.push({ name: 'login' })
+    redirect (name) {
+      this.$router.push({ name })
     }
-  },
-  components: {
-    FormInput,
-    FormButton,
-    HeaderImage
   }
 }
 </script>
@@ -123,10 +110,5 @@ export default {
   .buttons-line {
     border: 1px solid $mercury;
     margin: 20px 0;
-  }
-
-  .registered-message {
-    margin: 0 0 30px;
-    color: $green;
   }
 </style>
