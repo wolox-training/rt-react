@@ -72,12 +72,16 @@ export default {
       sessionUser(user)
         .then(response => {
           if (response.ok) {
-            console.log('[access-token]', response.data.access_token)
+            localStorage.token = response.data.access_token
+            this.redirect('books')
           }
         })
     },
     handleSignUp () {
-      this.$router.push({ name: 'register' })
+      this.redirect('register')
+    },
+    redirect (name) {
+      this.$router.push({ name })
     }
   }
 }
@@ -92,7 +96,7 @@ export default {
     border-top: solid 4px $deep-sky-blue;
     display: flex;
     flex-direction: column;
-    font-family: sans-serif;
+    font-family: $sans-serif;
     margin: 100px auto;
     max-width: 300px;
     padding: 30px 20px;
