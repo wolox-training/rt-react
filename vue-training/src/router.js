@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
-import NavBar from '@/components/NavBar'
+import Books from '@/views/Books'
 
 Vue.use(VueRouter)
 
@@ -19,8 +19,8 @@ const routes = [
   },
   {
     path: '/',
-    name: 'home',
-    component: NavBar
+    name: 'books',
+    component: Books
   }
 ]
 
