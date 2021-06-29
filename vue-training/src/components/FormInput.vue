@@ -7,6 +7,12 @@
       :value='input.value'
       @input='inputChange($event)'
     )
+    label.error(v-if="showRequiredError")
+      | This field is required
+    label.error(v-if="showEmailError")
+      | The email must be a genuine email address.
+    label.error(v-if="showStrongPassError")
+      | The password must have at least one capital letter and numbers
 </template>
 
 <script>
@@ -20,6 +26,31 @@ export default {
         type: '',
         value: ''
       })
+    },
+    validator: {
+      type: Object,
+      default: () => ({
+        $error: false,
+        value: {
+          required: false,
+          email: true,
+          strongPass: false
+        }
+      })
+    }
+  },
+  computed: {
+    getIfHasError () {
+      return this.validator && this.validator.$error
+    },
+    showRequiredError () {
+      return (this.getIfHasError && this.validator.value.required === false)
+    },
+    showEmailError () {
+      return (this.getIfHasError && this.validator.value.email === false)
+    },
+    showStrongPassError () {
+      return (this.getIfHasError && this.validator.value.strongPass === false)
     }
   },
   methods: {
@@ -31,6 +62,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import '@/scss/variables.scss';
+
   .form {
     &-container {
       width: 100%;
@@ -55,6 +88,12 @@ export default {
       border: none;
       border-radius: 10px;
       height: 35px;
+      margin-bottom: 5px;
     }
+  }
+
+  .error {
+    color: $red;
+    font-size: 12px;
   }
 </style>
