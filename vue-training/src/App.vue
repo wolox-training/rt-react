@@ -1,34 +1,8 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link class="nav-link" to="/">Home</router-link> |
-      <router-link class="nav-link" to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<template lang="pug">
+  #app
+    router-view
 </template>
 
 <style lang="scss">
-@import "./scss/variables.scss";
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $pickled-bluewood;
-}
-
-#nav {
-  padding: 30px;
-
-  .nav-link {
-    font-weight: bold;
-    color: $pickled-bluewood;
-
-    &.router-link-exact-active {
-      color: $ocean-green;
-    }
-  }
-}
+  @import './scss/application';
 </style>
