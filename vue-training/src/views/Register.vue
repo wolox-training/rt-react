@@ -1,6 +1,6 @@
 <template lang="pug">
   .main-container
-    img.header-image(alt='Wolox logo' src='@/assets/header-image.png')
+    header-image
     .form-container
       form
         form-input(
@@ -12,12 +12,13 @@
         )
         form-button(:button='signUpBtn' @handle-click='handleSignUp')
         hr.buttons-line
-        FormButton(:button='loginBtn' @handle-click='handleLogin')
+        form-button(:button='loginBtn' @handle-click='handleLogin')
 </template>
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
 import { registerUser } from '@/services/UserService'
+import HeaderImage from '@/components/HeaderImage'
 import FormInput from '@/components/FormInput'
 import FormButton from '@/components/FormButton'
 
@@ -33,11 +34,11 @@ export default {
       },
       signUpBtn: {
         text: 'Sign up',
-        class: 'sign-up'
+        class: 'primary'
       },
       loginBtn: {
         text: 'Login',
-        class: 'login'
+        class: 'secondary'
       }
     }
   },
@@ -93,7 +94,8 @@ export default {
   },
   components: {
     FormInput,
-    FormButton
+    FormButton,
+    HeaderImage
   }
 }
 </script>
@@ -107,16 +109,11 @@ export default {
     border-top: solid 4px $deep-sky-blue;
     display: flex;
     flex-direction: column;
-    font-family: sans-serif;
+    font-family: $sans-serif;
     margin: 100px auto;
     max-width: 300px;
     padding: 30px 20px;
     width: 100%;
-  }
-
-  .header-image {
-    margin-bottom: 40px;
-    width: 100%
   }
 
   .form-container {
@@ -125,7 +122,7 @@ export default {
 
   .buttons-line {
     border: 1px solid $mercury;
-    margin: 0 0 20px;
+    margin: 20px 0;
   }
 
   .registered-message {

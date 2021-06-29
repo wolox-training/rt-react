@@ -36,14 +36,13 @@ export default {
     height: 45px;
     width: 100%;
 
-    &.sign-up {
+    &.primary {
       border: none;
       color: $white;
       background-color: $light-green;
-      margin-bottom: 20px;
     }
 
-    &.login {
+    &.secondary {
       border: solid 2px $light-green;
       color: $light-green;
     }
