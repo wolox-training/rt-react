@@ -1,7 +1,7 @@
 <template lang="pug">
   .container
     .img-container
-      img.book-img(:src="book.image.url" alt="Book cover")
+      img.book-img(:src='book.image.url' alt='Book cover')
     h3.book-title
       | {{ book.title }}
     label.book-author
