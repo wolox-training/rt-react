@@ -27,17 +27,17 @@ export default {
   data () {
     return {
       inputs: {
-        firstName: { label: 'First name', type: 'text', value: '' },
-        lastName: { label: 'Last name', type: 'text', value: '' },
-        email: { label: 'Email', type: 'email', value: '' },
-        password: { label: 'Password', type: 'password', value: '' }
+        firstName: { label: this.$t('fname'), type: 'text', value: '' },
+        lastName: { label: this.$t('lname'), type: 'text', value: '' },
+        email: { label: this.$t('email'), type: 'email', value: '' },
+        password: { label: this.$t('passw'), type: 'password', value: '' }
       },
       signUpBtn: {
-        text: 'Sign up',
+        text: this.$t('signup'),
         class: 'primary'
       },
       loginBtn: {
-        text: 'Login',
+        text: this.$t('login'),
         class: 'secondary'
       }
     }
