@@ -3,7 +3,7 @@
     nav-bar
     .container
       .img-container
-        img
+        img(:src='book.img_url' alt='Book cover')
       .data-container
         h3.title
           | Titulo del libro
@@ -12,18 +12,19 @@
         p.data-title
           | Book author:
           label.data-desc
-            | Prueba
+            | {{ book.author }}
         p.data-title
           | Publisher:
           label.data-desc
-            | Prueba
+            | {{ book.publisher }}
         p.data-title
           | Year of publication:
           label.data-desc
-            | Prueba
+            | {{ book.year }}
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import NavBar from '@/components/NavBar'
 
 export default {
@@ -39,7 +40,10 @@ export default {
   },
   mounted () {
     this.$store.dispatch('books/getBook', { id: this.id })
-  }
+  },
+  computed: mapState({
+    book: state => state.books.book
+  })
 }
 </script>
 
@@ -55,9 +59,10 @@ export default {
   }
 
   .img-container {
+    background-color: $white-smoke;
     height: 250px;
     margin-right: 30px;
-    width: 220px;
+    width: 250px;
   }
 
   .data-container {

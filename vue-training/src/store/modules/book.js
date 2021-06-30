@@ -25,7 +25,10 @@ const Books = {
     getBook ({ commit }, payload) {
       getBook(payload.id).then(response => {
         if (response.ok) {
-          commit('setBook', response.data)
+          // This fixes the string and allows parsing to json
+          const data = response.data.replace('"returned_at": null,', '"returned_at": null')
+          const parsedData = JSON.parse(data)
+          commit('setBook', parsedData)
         }
       })
     }
