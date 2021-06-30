@@ -6,8 +6,8 @@
         img(:src='book.img_url' alt='Book cover')
       .data-container
         h3.title
-          | Titulo del libro
-          label.gender (genero del libro)
+          | {{ book.title }}
+          label.gender ({{ book.genre }})
         hr.title-underline
         p.data-title
           | Book author:
