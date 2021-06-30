@@ -21,10 +21,10 @@ export default {
     NavBar
   },
   mounted () {
-    this.$store.dispatch('getBooksList')
+    this.$store.dispatch('books/getBooksList')
   },
   computed: mapState({
-    books: 'bookList'
+    books: state => state.books.bookList
   })
 }
 </script>

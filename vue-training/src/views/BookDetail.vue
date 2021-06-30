@@ -38,7 +38,7 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('getBook', { id: this.id })
+    this.$store.dispatch('books/getBook', { id: this.id })
   }
 }
 </script>
