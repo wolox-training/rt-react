@@ -1,11 +1,12 @@
 <template lang="pug">
-  .container
-    .img-container
-      img.book-img(:src='book.image.url' alt='Book cover')
-    h3.book-title
-      | {{ book.title }}
-    label.book-author
-      | {{ book.author }}
+  router-link(:to='detailUrl')
+    .container
+      .img-container
+        img.book-img(:src='book.image.url' alt='Book cover')
+      h3.book-title
+        | {{ book.title }}
+      label.book-author
+        | {{ book.author }}
 </template>
 
 <script>
@@ -15,12 +16,18 @@ export default {
     book: {
       type: Object,
       default: () => ({
+        id: '',
         title: '',
         author: '',
         image: {
           url: ''
         }
       })
+    }
+  },
+  computed: {
+    detailUrl () {
+      return `/books/${this.book.id}`
     }
   }
 }

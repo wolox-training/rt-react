@@ -1,0 +1,96 @@
+<template lang="pug">
+  div
+    nav-bar
+    .container
+      .img-container
+        img
+      .data-container
+        h3.title
+          | Titulo del libro
+          label.gender (genero del libro)
+        hr.title-underline
+        p.data-title
+          | Book author:
+          label.data-desc
+            | Prueba
+        p.data-title
+          | Publisher:
+          label.data-desc
+            | Prueba
+        p.data-title
+          | Year of publication:
+          label.data-desc
+            | Prueba
+</template>
+
+<script>
+import NavBar from '@/components/NavBar'
+
+export default {
+  name: 'BookDetail',
+  components: {
+    NavBar
+  },
+  props: {
+    id: {
+      type: String,
+      required: true
+    }
+  },
+  mounted () {
+    this.$store.dispatch('getBook', { id: this.id })
+  }
+}
+</script>
+
+<style scoped lang="scss">
+  @import '@/scss/variables';
+
+  .container {
+    box-shadow: 0px 2px 8px 1px $light-grey;
+    display: flex;
+    margin: 50px auto;
+    padding: 30px 50px 30px 15px;
+    width: 70%;
+  }
+
+  .img-container {
+    height: 250px;
+    margin-right: 30px;
+    width: 220px;
+  }
+
+  .data-container {
+    width: 80%;
+  }
+
+  .title {
+    align-items: center;
+    display: flex;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 15px 0;
+  }
+
+  .gender {
+    color: $grey;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
+  .title-underline {
+    border: 2px solid $light-green;
+    margin-bottom: 30px;
+  }
+
+  .data-title {
+    font-size: 14px;
+    font-weight: 600;
+
+    .data-desc {
+      color: $grey;
+      font-weight: 500;
+      margin-left: 5px;
+    }
+  }
+</style>
