@@ -23,9 +23,11 @@ export default {
   mounted () {
     this.$store.dispatch('books/getBooksList')
   },
-  computed: mapState({
-    books: state => state.books.bookList
-  })
+  computed: {
+    ...mapState({
+      books: state => state.books.bookList
+    })
+  }
 }
 </script>
 
