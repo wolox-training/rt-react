@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BookBox from '@/components/BookBox'
 import NavBar from '@/components/NavBar'
 
@@ -21,11 +21,16 @@ export default {
     NavBar
   },
   mounted () {
-    this.$store.dispatch('books/getBooksList')
+    this.getBooks()
   },
   computed: {
     ...mapState({
       books: state => state.books.bookList
+    })
+  },
+  methods: {
+    ...mapActions({
+      getBooks: 'books/getBooksList'
     })
   }
 }
