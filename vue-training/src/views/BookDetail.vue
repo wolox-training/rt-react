@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import NavBar from '@/components/NavBar'
 
 export default {
@@ -40,11 +40,16 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('books/getBook', { id: this.id })
+    this.getBook({ id: this.id })
   },
   computed: {
     ...mapState({
       book: state => state.books.book
+    })
+  },
+  methods: {
+    ...mapActions({
+      getBook: 'books/getBook'
     })
   }
 }
