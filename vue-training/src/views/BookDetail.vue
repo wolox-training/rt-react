@@ -7,7 +7,8 @@
       .data-container
         h3.title
           | {{ book.title }}
-          label.gender ({{ book.genre }})
+          label.gender
+            | ({{ book.genre }})
         hr.title-underline
         p.data-title
           | Book author:
@@ -41,9 +42,11 @@ export default {
   mounted () {
     this.$store.dispatch('books/getBook', { id: this.id })
   },
-  computed: mapState({
-    book: state => state.books.book
-  })
+  computed: {
+    ...mapState({
+      book: state => state.books.book
+    })
+  }
 }
 </script>
 
