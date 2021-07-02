@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '@/views/Login'
-import Register from '@/views/Register'
-import Books from '@/views/Books'
+
+const Login = () => import('@/views/Login')
+const Register = () => import('@/views/Register')
+const Books = () => import('@/views/Books')
+const BookDetail = () => import('@/views/BookDetail')
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,12 @@ const routes = [
     path: '/',
     name: 'books',
     component: Books
+  },
+  {
+    path: '/books/:id',
+    name: 'bookDetail',
+    component: BookDetail,
+    props: true
   }
 ]
 

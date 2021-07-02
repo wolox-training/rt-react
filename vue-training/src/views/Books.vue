@@ -3,16 +3,16 @@
     nav-bar
     .books-container
       book-box(
-        v-for='book in bookList'
+        v-for='book in books'
         :key='book.id'
         :book='book'
       )
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import BookBox from '@/components/BookBox'
 import NavBar from '@/components/NavBar'
-import { getBooks } from '@/services/BooksService'
 
 export default {
   name: 'Books',
@@ -21,16 +21,17 @@ export default {
     NavBar
   },
   mounted () {
-    getBooks().then(response => {
-      if (response.ok) {
-        this.bookList = response.data
-      }
+    this.getBooks()
+  },
+  computed: {
+    ...mapState({
+      books: state => state.books.bookList
     })
   },
-  data () {
-    return {
-      bookList: []
-    }
+  methods: {
+    ...mapActions({
+      getBooks: 'books/getBooksList'
+    })
   }
 }
 </script>
