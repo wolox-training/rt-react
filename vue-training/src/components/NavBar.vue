@@ -31,7 +31,6 @@ export default {
     background-color: $white-smoke;
     border-top: solid 4px $deep-sky-blue;
     box-shadow: 0px 2px 8px 1px $light-grey;
-    font-family: sans-serif;
     height: 55px;
     width: 100%;
   }

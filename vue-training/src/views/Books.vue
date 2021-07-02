@@ -40,7 +40,7 @@ export default {
   @import '@/scss/variables.scss';
 
   .main-container {
-    font-family: $sans-serif;
+    font-family: var(--font-family);
   }
 
   .books-container {
@@ -49,6 +49,6 @@ export default {
     margin: 50px auto;
     max-width: 1100px;
     padding: 0 50px;
-    width: 100%;
+    width: var(--full-width);
   }
 </style>
