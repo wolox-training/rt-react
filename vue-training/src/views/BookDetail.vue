@@ -11,15 +11,15 @@
             | ({{ book.genre }})
         hr.title-underline
         p.data-title
-          | Book author:
+          | {{ $t('author') }}:
           label.data-desc
             | {{ book.author }}
         p.data-title
-          | Publisher:
+          | {{ $t('publisher') }}:
           label.data-desc
             | {{ book.publisher }}
         p.data-title
-          | Year of publication:
+          | {{ $t('year') }}:
           label.data-desc
             | {{ book.year }}
 </template>

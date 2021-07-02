@@ -32,15 +32,15 @@ export default {
   data () {
     return {
       inputs: {
-        email: { label: 'Email', type: 'email', value: '' },
-        password: { label: 'Password', type: 'password', value: '' }
+        email: { label: this.$t('email'), type: 'email', value: '' },
+        password: { label: this.$t('passw'), type: 'password', value: '' }
       },
       signUpBtn: {
-        text: 'Sign up',
+        text: this.$t('signup'),
         class: 'secondary'
       },
       loginBtn: {
-        text: 'Login',
+        text: this.$t('login'),
         class: 'primary'
       }
     }
