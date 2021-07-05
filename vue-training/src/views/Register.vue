@@ -109,15 +109,14 @@ export default {
     border-top: solid 4px $deep-sky-blue;
     display: flex;
     flex-direction: column;
-    font-family: $sans-serif;
     margin: 100px auto;
     max-width: 300px;
     padding: 30px 20px;
-    width: 100%;
+    width: var(--full-width);
   }
 
   .form-container {
-    width: 100%;
+    width: var(--full-width);
   }
 
   .buttons-line {
