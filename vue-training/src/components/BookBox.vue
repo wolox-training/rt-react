@@ -1,12 +1,13 @@
 <template lang="pug">
-  router-link(:to='detailUrl')
-    .container
-      .img-container
-        img.book-img(:src='book.image.url' alt='Book cover')
-      h3.book-title
-        | {{ book.title }}
-      label.book-author
-        | {{ book.author }}
+  transition(appear name='book-tr')
+    router-link(:to='detailUrl')
+      .container
+        .img-container
+          img.book-img(:src='book.image.url' alt='Book cover')
+        h3.book-title
+          | {{ book.title }}
+        label.book-author
+          | {{ book.author }}
 </template>
 
 <script>
@@ -63,6 +64,22 @@ export default {
     &-author {
       font-size: 12px;
       margin-top: 0;
+    }
+  }
+
+  .book-tr-enter-active {
+    animation: bounce-in 1s;
+  }
+
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 </style>

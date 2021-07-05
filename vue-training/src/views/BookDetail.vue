@@ -1,27 +1,28 @@
 <template lang="pug">
   div
     nav-bar
-    .container
-      .img-container
-        img(:src='book.img_url' alt='Book cover')
-      .data-container
-        h3.title
-          | {{ book.title }}
-          label.gender
-            | ({{ book.genre }})
-        hr.title-underline
-        p.data-title
-          | {{ $t('author') }}:
-          label.data-desc
-            | {{ book.author }}
-        p.data-title
-          | {{ $t('publisher') }}:
-          label.data-desc
-            | {{ book.publisher }}
-        p.data-title
-          | {{ $t('year') }}:
-          label.data-desc
-            | {{ book.year }}
+    transition(appear name='detail')
+      .container
+        .img-container
+          img(:src='book.img_url' alt='Book cover')
+        .data-container
+          h3.title
+            | {{ book.title }}
+            label.gender
+              | ({{ book.genre }})
+          hr.title-underline
+          p.data-title
+            | {{ $t('author') }}:
+            label.data-desc
+              | {{ book.author }}
+          p.data-title
+            | {{ $t('publisher') }}:
+            label.data-desc
+              | {{ book.publisher }}
+          p.data-title
+            | {{ $t('year') }}:
+            label.data-desc
+              | {{ book.year }}
 </template>
 
 <script>
@@ -105,5 +106,14 @@ export default {
       font-weight: 500;
       margin-left: 5px;
     }
+  }
+
+  .detail-enter-active {
+    transition: all 1s ease;
+  }
+
+  .detail-enter, .detail-leave-to {
+    transform: translateX(1000px);
+    opacity: 0;
   }
 </style>
