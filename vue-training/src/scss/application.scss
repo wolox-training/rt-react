@@ -1,0 +1,11 @@
+@import './variables';
+
+:root {
+  --font-family: sans-serif;
+  --full-width: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+}

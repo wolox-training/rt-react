@@ -1,0 +1,50 @@
+<template lang="pug">
+  .buttons-container
+    button.form-button(
+      :class='button.class'
+      @click.prevent='handleSubmit'
+      type='button'
+    )
+      | {{ button.text }}
+</template>
+
+<script>
+export default {
+  name: 'FormButton',
+  props: {
+    button: {
+      type: Object,
+      default: () => ({
+        text: '',
+        class: ''
+      })
+    }
+  },
+  methods: {
+    handleSubmit () {
+      this.$emit('handle-click')
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+  @import "@/scss/variables.scss";
+
+  .form-button {
+    border-radius: 10px;
+    height: 45px;
+    width: 100%;
+
+    &.primary {
+      border: none;
+      color: $white;
+      background-color: $light-green;
+    }
+
+    &.secondary {
+      border: solid 2px $light-green;
+      color: $light-green;
+    }
+  }
+</style>
