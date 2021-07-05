@@ -1,18 +1,19 @@
 <template lang="pug">
-  .main-container
-    header-image
-    .form-container
-      form
-        form-input(
-          v-for='(input, key) in inputs'
-          :key='key'
-          :input='input'
-          v-model='input.value'
-          :validator='$v.inputs[key]'
-        )
-        form-button(:button='loginBtn' @handle-click='handleLogin')
-        hr.buttons-line
-        form-button(:button='signUpBtn' @handle-click='handleSignUp')
+  transition(name='fade' mode='out-in')
+    .main-container(v-if='show')
+      header-image
+      .form-container
+        form
+          form-input(
+            v-for='(input, key) in inputs'
+            :key='key'
+            :input='input'
+            v-model='input.value'
+            :validator='$v.inputs[key]'
+          )
+          form-button(:button='loginBtn' @handle-click='handleLogin')
+          hr.buttons-line
+          form-button(:button='signUpBtn' @handle-click='handleSignUp')
 </template>
 
 <script>
@@ -31,6 +32,7 @@ export default {
   },
   data () {
     return {
+      show: true,
       inputs: {
         email: { label: this.$t('email'), type: 'email', value: '' },
         password: { label: this.$t('passw'), type: 'password', value: '' }
@@ -72,6 +74,7 @@ export default {
       sessionUser(user)
         .then(response => {
           if (response.ok) {
+            this.show = false
             localStorage.token = response.data.access_token
             this.redirect('books')
           }
@@ -109,5 +112,13 @@ export default {
   .buttons-line {
     border: 1px solid $mercury;
     margin: 20px 0;
+  }
+
+  .fade-leave-active {
+    transition: opacity 1s
+  }
+
+  .fade-leave-to {
+    opacity: 0
   }
 </style>
